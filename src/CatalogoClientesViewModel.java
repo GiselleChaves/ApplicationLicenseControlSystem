@@ -1,7 +1,7 @@
-package Clientes;
+//package Clientes;
 import javax.swing.table.AbstractTableModel;
 
-import CatalogoClientes;
+//import CatalogoClientes;
 
 public class CatalogoClientesViewModel extends AbstractTableModel {
     private CatalogoClientes clientes;

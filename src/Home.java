@@ -36,19 +36,19 @@ public class Home extends JFrame {
 
         JButton botao1 = menuLateral.criarBotao("CLIENTES", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                PaginaClientes paginaClientes = new PaginaClientes();
+                //PaginaClientes paginaClientes = new PaginaClientes();
             }
         });
 
         JButton botao2 = menuLateral.criarBotao("APLICATIVOS", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                PaginaAplicativos paginaAplicativos = new PaginaAplicativos();
+                //PaginaAplicativos paginaAplicativos = new PaginaAplicativos();
             }
         });
 
         JButton botao3 = menuLateral.criarBotao("ASSINATURAS", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                PaginaAssinaturas paginaAplicativos = new PaginaAssinaturas();
+                //PaginaAssinaturas paginaAplicativos = new PaginaAssinaturas();
             }
         });
 
