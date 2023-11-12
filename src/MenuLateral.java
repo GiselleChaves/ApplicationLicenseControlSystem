@@ -2,6 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+import clientes.*;
+import assinaturas.*;
+import aplicativos.*;
+
 public class MenuLateral extends JPanel {
     public MenuLateral() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

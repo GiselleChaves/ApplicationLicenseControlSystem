@@ -4,6 +4,10 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.net.URL;
 
+import clientes.*;
+import assinaturas.*;
+import aplicativos.*;
+
 public class PainelCompartilhado extends JPanel {
     private JLabel rotuloConteudo;
 

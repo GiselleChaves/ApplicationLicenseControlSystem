@@ -1,3 +1,4 @@
+package clientes;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import Clientes.Cliente;
 
 public class CatalogoClientes {
     private List<Cliente> clientes;
@@ -38,7 +38,7 @@ public class CatalogoClientes {
     }
 
     public void loadFromFile() {
-        Path clientesFilePath = Path.of("clientes.txt");
+        Path clientesFilePath = Path.of("clientes/clientes.txt");
         try (Stream<String> clientesStream = Files.lines(clientesFilePath)) {
             clientesStream.forEach(str -> clientes.add(Cliente.fromLineFile(str)));
         } catch (IOException e) {
@@ -47,7 +47,7 @@ public class CatalogoClientes {
     }
 
     public void saveToFile() {
-        Path clientesFilePath = Path.of("clientes.txt");
+        Path clientesFilePath = Path.of("clientes/clientes.txt");
         try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(clientesFilePath, StandardCharsets.UTF_8))) {
             for (Cliente cliente : clientes) {
                 writer.println(cliente.toLineFile());

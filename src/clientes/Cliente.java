@@ -1,4 +1,5 @@
-package Clientes;
+package clientes;
+
 public class Cliente {
     private int codigo;
     private String nome;

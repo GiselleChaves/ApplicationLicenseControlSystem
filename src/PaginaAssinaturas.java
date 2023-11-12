@@ -4,6 +4,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import clientes.*;
+import assinaturas.*;
+import aplicativos.*;
+
 public class PaginaAssinaturas extends JFrame {
     private MenuLateral menuAssinaturas;
     private PainelCompartilhado painelConteudoCompartilhado;

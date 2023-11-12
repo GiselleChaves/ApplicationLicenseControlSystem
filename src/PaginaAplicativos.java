@@ -5,6 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import clientes.*;
+import assinaturas.*;
+import aplicativos.*;
+
 public class PaginaAplicativos extends JFrame {
     private MenuLateral menuAplicativos;
     private PainelCompartilhado painelConteudoCompartilhado;
@@ -40,7 +44,7 @@ public class PaginaAplicativos extends JFrame {
 
         JButton botao1 = menuAplicativos.criarBotao("Cadastrar Aplicativo", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Ação para CLIENTES");
+                abrirJanelaCadastroAplicativo();
             }
         });
 
@@ -81,6 +85,13 @@ public class PaginaAplicativos extends JFrame {
 
     private void exibirJanela() {
         setVisible(true);
+    }
+
+    private void abrirJanelaCadastroAplicativo() {
+        SwingUtilities.invokeLater(() -> {
+            CadastroAplicativoFrame cadastroFrame = new CadastroAplicativoFrame();
+            cadastroFrame.setVisible(true);
+        });
     }
 
     public static void main(String[] args) {

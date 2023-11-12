@@ -4,6 +4,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import clientes.*;
+import assinaturas.*;
+import aplicativos.*;
+
 public class PaginaClientes extends JFrame {
     private MenuLateral menuClientes;
     private PainelCompartilhado painelConteudoCompartilhado;
@@ -100,6 +104,11 @@ public class PaginaClientes extends JFrame {
         painelConteudoCompartilhado.revalidate();
         painelConteudoCompartilhado.repaint();
     }
+
+    ///Opções:
+
+    //Cadastrar cliente.
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {

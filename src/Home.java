@@ -1,6 +1,10 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import clientes.*;
+import assinaturas.*;
+import aplicativos.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
