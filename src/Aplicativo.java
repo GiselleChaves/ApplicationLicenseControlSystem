@@ -4,19 +4,12 @@ public class Aplicativo {
   private String so;
   private double valorMensalAssinatura;
   private int contAplicativos;
-  private double totalFaturamentoAndroid;
-  private double totalFaturamentoIOS;
-
+  
   public Aplicativo(int codigo, String nome, String so, double valorMensalAssinatura){
     this.codigo = codigo;
     this.nome = nome;
     this.valorMensalAssinatura = valorMensalAssinatura;
     this.so = so;
-    if(so.equals("android")){
-      totalFaturamentoAndroid += valorMensalAssinatura;
-    }else{
-      totalFaturamentoIOS += valorMensalAssinatura;
-    }
     this.contAplicativos = 0;
   }
 
@@ -59,6 +52,4 @@ public class Aplicativo {
   public void setContAplicativos(int contAplicativos) {
     this.contAplicativos = contAplicativos;
   }
-
-  
 }

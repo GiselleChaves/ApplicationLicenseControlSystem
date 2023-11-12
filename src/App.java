@@ -8,7 +8,7 @@ public class App {
         catalogo.cadastraAppNoCatalogo(new Aplicativo(4, "AppCozinhando", "IOS", 7.99));
         catalogo.cadastraAppNoCatalogo(new Aplicativo(5, "Encontre sua Localização", "Android", 4.75));
         catalogo.cadastraAppNoCatalogo(new Aplicativo(6, "Encontre sua Localização", "IOS", 6.57));
-        Assinatura assinatura = new Assinatura("123", "1", "0356798451", "01", "2023", "01", "2024");
+        //Assinatura assinatura = new Assinatura("123", "1", "0356798451", "01", "2023", "01", "2024");
         
         catalogo.mostraNomeAplicativos();
         

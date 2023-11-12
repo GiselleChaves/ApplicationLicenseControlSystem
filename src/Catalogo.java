@@ -14,10 +14,6 @@ public class Catalogo {
     return contAplicativos;
   }
 
-  public void setContAplicativos(int cont) {
-    this.contAplicativos = contAplicativos;
-  }
-
   public void cadastraAppNoCatalogo(Aplicativo app){
     listaAplicativos.add(app);
     contAplicativos++;
