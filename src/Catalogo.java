@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Catalogo {
+public class Catalogo<T> {
   List<Aplicativo> listaAplicativos;
   private int contAplicativos;
 
@@ -14,15 +14,12 @@ public class Catalogo {
     return contAplicativos;
   }
 
-  public void setContAplicativos(int cont) {
-    this.contAplicativos = contAplicativos;
-  }
-
   public void cadastraAppNoCatalogo(Aplicativo app){
     listaAplicativos.add(app);
     contAplicativos++;
   }
 
+  //OK, FUNCIONANDO!
   public void mostraNomeAplicativos(){
     listaAplicativos
     .stream()
@@ -30,30 +27,39 @@ public class Catalogo {
     .forEach(System.out::println);
   }            
 
-  public void mostraAssinantesDoApp(){}
-
-  public void alterarDadosAplicativo(Predicate<Aplicativo> condicao, Consumer<Aplicativo> oper){
-    for(Aplicativo app: listaAplicativos){
-      if(condicao.test(app)){
+  public void alterarNomeAplicativo(Predicate<Aplicativo> condicao, Consumer<Aplicativo> oper){
+    for (Aplicativo app : listaAplicativos){
+      if (condicao.test(app)) {
         oper.accept(app);
       }
     }
   }
 
+  //OK, FUNCIONANDO!
   public double mostraFaturamentoAndroid(){
     return listaAplicativos
           .stream()
-          .filter(a -> a.getSo().equals("android"))
-          .mapToDouble(a -> a.getValorMensalAssinatura())
+          .filter(item -> item instanceof Aplicativo && ((Aplicativo)item).getSo().equals("android"))
+          .mapToDouble(item -> ((Aplicativo) item).getTotalFaturamentoAndroid())
           .sum();
   }
 
-  public void mostraFaturamentoIOS(){
-    listaAplicativos
-    .stream()
-    .filter(a -> a.getSo().equals("ios"))
-    .toList();
+  //OK, FUNCIONANDO!
+  public double mostraFaturamentoIOS(){
+    return listaAplicativos
+          .stream()
+          .filter(item -> item instanceof Aplicativo && ((Aplicativo)item).getSo().equals("ios"))
+          .mapToDouble(item -> ((Aplicativo) item).getTotalFaturamentoIOS())
+          .sum();
   }
 
   
 }
+/*public void alterarDadosAplicativo(Predicate<Aplicativo> condicao, Function<Aplicativo, T> oper){
+    for (int i = 0; i < listaAplicativos.size(); i++) {
+      Aplicativo app = listaAplicativos.get(i);
+      if (condicao.test(app)) {
+          app.oper(i, oper.apply(app));
+      }
+    }
+  } */

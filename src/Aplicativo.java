@@ -4,8 +4,16 @@ public class Aplicativo {
   private String so;
   private double valorMensalAssinatura;
   private int contAplicativos;
+  public double getTotalFaturamentoAndroid() {
+    return totalFaturamentoAndroid;
+  }
+
   private double totalFaturamentoAndroid;
   private double totalFaturamentoIOS;
+
+  public double getTotalFaturamentoIOS() {
+    return totalFaturamentoIOS;
+  }
 
   public Aplicativo(int codigo, String nome, String so, double valorMensalAssinatura){
     this.codigo = codigo;
@@ -13,9 +21,9 @@ public class Aplicativo {
     this.valorMensalAssinatura = valorMensalAssinatura;
     this.so = so;
     if(so.equals("android")){
-      totalFaturamentoAndroid += valorMensalAssinatura;
-    }else{
-      totalFaturamentoIOS += valorMensalAssinatura;
+      totalFaturamentoAndroid += getValorMensalAssinatura();
+    }else if(so.equals("ios")){
+      totalFaturamentoIOS += getValorMensalAssinatura();
     }
     this.contAplicativos = 0;
   }

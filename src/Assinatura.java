@@ -9,7 +9,7 @@ public class Assinatura {
   private String anoInicioVigencia;
   private String mesFimVigencia;
   private String anoFimVigencia;
-  List<Cliente> listaClientes;
+  //List<Cliente> listaClientes;
 
 
   public Assinatura(String codigoAssinatura, String codigoApp, String cpfCliente, String mesInicioVigencia,
@@ -21,17 +21,13 @@ public class Assinatura {
     this.anoInicioVigencia = anoInicioVigencia;
     this.mesFimVigencia = mesFimVigencia;
     this.anoFimVigencia = anoFimVigencia;
-    if(listaClientes == null){
+    /*if(listaClientes == null){
       listaClientes = new ArrayList();
-    }
+    }*/
   }
 
-  public void AdicionarAssinatura(){
-    
-  }
-  public void mostrarAssinantes(){
-
-  }
+  public void AdicionarAssinatura(){}
+  public void mostrarAssinantes(){}
 
 
   public String getCodigoAssinatura() {
