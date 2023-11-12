@@ -1,5 +1,5 @@
 import java.util.List;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class Assinatura {
   private String codigoAssinatura;
@@ -21,10 +21,9 @@ public class Assinatura {
     this.anoInicioVigencia = anoInicioVigencia;
     this.mesFimVigencia = mesFimVigencia;
     this.anoFimVigencia = anoFimVigencia;
-    if(listaClientes == null){
-      listaClientes = new ArrayList();
+    //if(listaClientes == null){
+      //listaClientes = new ArrayList();
     }
-  }
 
   public void AdicionarAssinatura(){
     
