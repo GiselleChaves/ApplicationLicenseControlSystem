@@ -1,4 +1,7 @@
-public class Assinaturas {
+import java.util.List;
+import java.util.ArrayList;
+
+public class Assinatura {
   private String codigoAssinatura;
   private String codigoApp;
   private String cpfCliente;
@@ -6,9 +9,10 @@ public class Assinaturas {
   private String anoInicioVigencia;
   private String mesFimVigencia;
   private String anoFimVigencia;
+  List<Cliente> listaClientes;
 
 
-  public Assinaturas(String codigoAssinatura, String codigoApp, String cpfCliente, String mesInicioVigencia,
+  public Assinatura(String codigoAssinatura, String codigoApp, String cpfCliente, String mesInicioVigencia,
                     String anoInicioVigencia, String mesFimVigencia, String anoFimVigencia) {
     this.codigoAssinatura = codigoAssinatura;
     this.codigoApp = codigoApp;
@@ -17,6 +21,16 @@ public class Assinaturas {
     this.anoInicioVigencia = anoInicioVigencia;
     this.mesFimVigencia = mesFimVigencia;
     this.anoFimVigencia = anoFimVigencia;
+    if(listaClientes == null){
+      listaClientes = new ArrayList();
+    }
+  }
+
+  public void AdicionarAssinatura(){
+    
+  }
+  public void mostrarAssinantes(){
+
   }
 
 
