@@ -67,6 +67,4 @@ public class Aplicativo {
   public void setContAplicativos(int contAplicativos) {
     this.contAplicativos = contAplicativos;
   }
-
-  
 }

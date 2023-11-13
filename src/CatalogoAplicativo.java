@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Catalogo<T> {
+public class CatalogoAplicativo {
   List<Aplicativo> listaAplicativos;
   private int contAplicativos;
 
-  public Catalogo(){
+  public CatalogoAplicativo(){
     listaAplicativos = new ArrayList<>();
     this.contAplicativos = 0;
   }
