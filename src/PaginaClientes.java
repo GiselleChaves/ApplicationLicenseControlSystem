@@ -45,7 +45,7 @@ public class PaginaClientes extends JFrame {
 
         JButton botao1 = menuClientes.criarBotao("Cadastrar Cliente", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Ação para CLIENTES");
+                abrirJanelaCadastroCliente();
             }
         });
 
@@ -108,6 +108,13 @@ public class PaginaClientes extends JFrame {
     ///Opções:
 
     //Cadastrar cliente.
+    private void abrirJanelaCadastroCliente() {
+        SwingUtilities.invokeLater(() -> {
+            CadastroClienteFrame cadastroFrame = new CadastroClienteFrame();
+            cadastroFrame.setVisible(true);
+        });
+    }
+
 
 
     public static void main(String[] args) {
