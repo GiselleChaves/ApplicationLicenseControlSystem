@@ -107,22 +107,11 @@ public class PaginaClientes extends JDialog {
 
     //Cadastrar cliente.
     private void abrirJanelaCadastroCliente() {
-<<<<<<< HEAD
         CadastroCliente cadastro = new CadastroCliente(this);
         cadastro.setLocationRelativeTo(this); // Define a localização relativa à janela pai
         cadastro.setVisible(true);
     }
     
-=======
-        SwingUtilities.invokeLater(() -> {
-            CadastroClienteFrame cadastroFrame = new CadastroClienteFrame();
-            cadastroFrame.setVisible(true);
-        });
-    }
-
-
-
->>>>>>> 8156c64025de728763dda958d81d249e883fd5d3
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             Home home = new Home(); // Altere para Home ao invés de JFrame
