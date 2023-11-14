@@ -8,11 +8,15 @@ import clientes.*;
 import assinaturas.*;
 import aplicativos.*;
 
-public class PaginaClientes extends JFrame {
+public class PaginaClientes extends JDialog {
     private MenuLateral menuClientes;
     private PainelCompartilhado painelConteudoCompartilhado;
 
-    public PaginaClientes() {
+    private Home parentHome; 
+
+    public PaginaClientes(Home parent) {
+        super(parent, "Clientes", Dialog.ModalityType.APPLICATION_MODAL);
+        this.parentHome = parent;
         configurarJanela();
 
         criarMenuClientes();
@@ -20,13 +24,10 @@ public class PaginaClientes extends JFrame {
 
         adicionarComponentes();
         criarEAtualizarTabela();
-
-        exibirJanela();
     }
 
     private void configurarJanela() {
-        setTitle("Clientes");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE); // Configuração válida para a operação padrão de fechamento
         setSize(600, 400);
         setLayout(new BorderLayout());
     }
@@ -45,7 +46,7 @@ public class PaginaClientes extends JFrame {
 
         JButton botao1 = menuClientes.criarBotao("Cadastrar Cliente", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Ação para CLIENTES");
+                abrirJanelaCadastroCliente();
             }
         });
 
@@ -83,9 +84,6 @@ public class PaginaClientes extends JFrame {
         add(menuClientes, BorderLayout.WEST);
     }
 
-    private void exibirJanela() {
-        setVisible(true);
-    }
 
     private void criarEAtualizarTabela() {
        
@@ -108,13 +106,16 @@ public class PaginaClientes extends JFrame {
     ///Opções:
 
     //Cadastrar cliente.
-
-
+    private void abrirJanelaCadastroCliente() {
+        CadastroCliente cadastro = new CadastroCliente(this);
+        cadastro.setLocationRelativeTo(this); // Define a localização relativa à janela pai
+        cadastro.setVisible(true);
+    }
+    
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new PaginaClientes();
-            }
+        SwingUtilities.invokeLater(() -> {
+            Home home = new Home(); // Altere para Home ao invés de JFrame
+            new PaginaClientes(home);
         });
     }
 }

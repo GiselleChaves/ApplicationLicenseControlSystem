@@ -1,28 +1,30 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CadastroClienteFrame extends JFrame {
-    
+public class CadastroCliente extends JDialog {
+
     private JTextField codigoField;
     private JTextField nomeField;
     private JTextField emailField;
 
-    public CadastroClienteFrame() {
+    private PaginaClientes paginaClientes; 
+
+    public CadastroCliente(PaginaClientes parent) {
+        super(parent, "Cadastro de Cliente", Dialog.ModalityType.APPLICATION_MODAL);
+        this.paginaClientes = parent;
         initComponents();
     }
 
     private void initComponents() {
-        setTitle("Cadastro de Cliente");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        
+
         // Adiciona um espaçamento de 10 pixels em todas as bordas do JPanel
         panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
@@ -37,7 +39,7 @@ public class CadastroClienteFrame extends JFrame {
         btnCadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //cadastrarCliente();
+                cadastrarCliente();
             }
         });
 
@@ -55,14 +57,14 @@ public class CadastroClienteFrame extends JFrame {
         getContentPane().add(panel);
     }
 
-    private void cadastrarAplicativo() {
+    private void cadastrarCliente() {
         int codigo = Integer.parseInt(codigoField.getText());
         String nome = nomeField.getText();
         String email = emailField.getText();
 
-        //catalogoClientes.cadastra(new Aplicativo(codigo, nome, email));
+        // Código para cadastrar o cliente
 
-        // Limpe os campos após cadastrar o aplicativo
+        // Limpe os campos após cadastrar o cliente
         codigoField.setText("");
         nomeField.setText("");
         emailField.setText("");
@@ -72,8 +74,10 @@ public class CadastroClienteFrame extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            CadastroAplicativoFrame cadastroFrame = new CadastroAplicativoFrame();
-            cadastroFrame.setVisible(true);
+            PaginaClientes paginaClientes = new PaginaClientes(null); // Substitua `null` pela instância correta se necessário
+            CadastroCliente cadastro = new CadastroCliente(paginaClientes);
+            cadastro.setLocationRelativeTo(paginaClientes);
+            cadastro.setVisible(true);
         });
     }
 }

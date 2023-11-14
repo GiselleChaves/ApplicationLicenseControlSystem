@@ -4,13 +4,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.EmptyBorder;
 
-public class CadastroAplicativoFrame extends JFrame {
+public class CadastroAplicativo extends JDialog {
     private JTextField codigoField;
     private JTextField nomeField;
     private JTextField soField;
     private JTextField valorMensalField;
 
-    public CadastroAplicativoFrame() {
+    private PaginaAplicativos paginaAplicativos; 
+
+    public CadastroAplicativo(PaginaAplicativos parent) {
+        super(parent, "Cadastro de Aplicativo", Dialog.ModalityType.APPLICATION_MODAL);
+        this.paginaAplicativos = parent;
         initComponents();
     }
 
@@ -22,7 +26,6 @@ public class CadastroAplicativoFrame extends JFrame {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         
-        // Adiciona um espaçamento de 10 pixels em todas as bordas do JPanel
         panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         JLabel lblCodigo = new JLabel("Código:");
@@ -59,26 +62,32 @@ public class CadastroAplicativoFrame extends JFrame {
     }
 
     private void cadastrarAplicativo() {
-        int codigo = Integer.parseInt(codigoField.getText());
-        String nome = nomeField.getText();
-        String so = soField.getText();
-        double valorMensalAssinatura = Double.parseDouble(valorMensalField.getText());
-
-        //catalogoAplicativos.cadastra(new Aplicativo(codigo, nome, so, valorMensalAssinatura));
-
-        // Limpe os campos após cadastrar o aplicativo
-        codigoField.setText("");
-        nomeField.setText("");
-        soField.setText("");
-        valorMensalField.setText("");
-
-        dispose();
+        try {
+            int codigo = Integer.parseInt(codigoField.getText());
+            String nome = nomeField.getText();
+            String so = soField.getText();
+            double valorMensalAssinatura = Double.parseDouble(valorMensalField.getText());
+    
+            // Seu código para cadastrar o aplicativo
+    
+            // Limpe os campos após cadastrar o aplicativo
+            codigoField.setText("");
+            nomeField.setText("");
+            soField.setText("");
+            valorMensalField.setText("");
+    
+            dispose();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Erro: Preencha os campos corretamente.", "Erro de Cadastro", JOptionPane.ERROR_MESSAGE);
+        }
     }
-
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            CadastroAplicativoFrame cadastroFrame = new CadastroAplicativoFrame();
-            cadastroFrame.setVisible(true);
+            PaginaAplicativos paginaAplicativos = new PaginaAplicativos(null); // Substitua `null` pela instância correta se necessário
+            CadastroAplicativo cadastro = new CadastroAplicativo(paginaAplicativos);
+            cadastro.setLocationRelativeTo(paginaAplicativos);
+            cadastro.setVisible(true);
         });
     }
 }

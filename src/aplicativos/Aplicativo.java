@@ -1,11 +1,14 @@
 package aplicativos;
 
+import clientes.Cliente;
+
 public class Aplicativo {
   private int codigo;
   private String nome;
   private String so;
   private double valorMensalAssinatura;
   private int contAplicativos;
+
   private double totalFaturamentoAndroid;
   private double totalFaturamentoIOS;
 
@@ -14,12 +17,22 @@ public class Aplicativo {
     this.nome = nome;
     this.valorMensalAssinatura = valorMensalAssinatura;
     this.so = so;
+
     if(so.equals("android")){
-      totalFaturamentoAndroid += valorMensalAssinatura;
-    }else{
-      totalFaturamentoIOS += valorMensalAssinatura;
+      totalFaturamentoAndroid += getValorMensalAssinatura();
+    }
+    else if(so.equals("ios")){
+      totalFaturamentoIOS += getValorMensalAssinatura();
     }
     this.contAplicativos = 0;
+  }
+
+  public double getTotalFaturamentoAndroid() {
+    return totalFaturamentoAndroid;
+  }
+
+  public double getTotalFaturamentoIOS() {
+    return totalFaturamentoIOS;
   }
 
   public int getCodigo() {
@@ -62,5 +75,18 @@ public class Aplicativo {
     this.contAplicativos = contAplicativos;
   }
 
-  
+  public String toLineFile() {
+      return codigo + "," + nome + "," + valorMensalAssinatura + "," + so ;
+  }
+
+  public static Aplicativo fromLineFile(String line) {
+    String[] tokens = line.split(",");
+    
+    int codigo = Integer.parseInt(tokens[0]);
+    String nome = tokens[1];
+    double valorMensalAssinatura = Double.parseDouble(tokens[2]);
+    String so = tokens[3];
+
+    return new Aplicativo(codigo, nome, so, valorMensalAssinatura);
+  }
 }

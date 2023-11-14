@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 public class Home extends JFrame {
     private MenuLateral menuLateral;
     private PainelCompartilhado painelConteudoCompartilhado;
+    
+    private PaginaClientes paginaClientes; 
 
     public Home() {
         configurarJanelaPrincipal();
@@ -40,19 +42,19 @@ public class Home extends JFrame {
 
         JButton botao1 = menuLateral.criarBotao("CLIENTES", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                PaginaClientes paginaClientes = new PaginaClientes();
+                exibirPaginaClientes();
             }
         });
 
         JButton botao2 = menuLateral.criarBotao("APLICATIVOS", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                PaginaAplicativos paginaAplicativos = new PaginaAplicativos();
+                exibirPaginaAplicativos();
             }
         });
 
         JButton botao3 = menuLateral.criarBotao("ASSINATURAS", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                PaginaAssinaturas paginaAplicativos = new PaginaAssinaturas();
+                exibirPaginaAssinaturas();
             }
         });
 
@@ -80,6 +82,22 @@ public class Home extends JFrame {
     private void exibirJanela() {
         setVisible(true);
     }
+
+    private void exibirPaginaClientes() {
+        paginaClientes = new PaginaClientes(this);
+        paginaClientes.setVisible(true);
+    }
+
+    private void exibirPaginaAplicativos() {
+        PaginaAplicativos paginaAplicativos = new PaginaAplicativos(this);
+        paginaAplicativos.setVisible(true);
+    }
+
+    private void exibirPaginaAssinaturas() {
+        PaginaAssinaturas paginaAssinaturas = new PaginaAssinaturas(this);
+        paginaAssinaturas.setVisible(true);
+    }
+    
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {

@@ -8,23 +8,23 @@ import clientes.*;
 import assinaturas.*;
 import aplicativos.*;
 
-public class PaginaAssinaturas extends JFrame {
+public class PaginaAssinaturas extends JDialog {
     private MenuLateral menuAssinaturas;
     private PainelCompartilhado painelConteudoCompartilhado;
 
-    public PaginaAssinaturas() {
+    public PaginaAssinaturas(Frame parent) {
+        super(parent, "Assinaturas", Dialog.ModalityType.APPLICATION_MODAL); 
         configurarJanela();
 
         criarMenuAssinaturas();
         criarPainelConteudo();
 
         adicionarComponentes();
-        exibirJanela();
     }
 
     private void configurarJanela() {
         setTitle("Assinaturas");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE); 
         setSize(600, 400);
         setLayout(new BorderLayout());
     }
@@ -57,14 +57,11 @@ public class PaginaAssinaturas extends JFrame {
         add(menuAssinaturas, BorderLayout.WEST);
     }
 
-    private void exibirJanela() {
-        setVisible(true);
-    }
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new PaginaClientes();
+                JFrame home = new Home();
+                new PaginaAssinaturas(home);
             }
         });
     }

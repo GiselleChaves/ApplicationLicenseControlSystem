@@ -1,31 +1,35 @@
-
 import javax.swing.*;
+
+import clientes.*;
+import aplicativos.*;
+import assinaturas.*;
+
+import clientes.CatalogoClientesViewModel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import clientes.*;
-import assinaturas.*;
-import aplicativos.*;
-
-public class PaginaAplicativos extends JFrame {
+public class PaginaAplicativos extends JDialog {
     private MenuLateral menuAplicativos;
     private PainelCompartilhado painelConteudoCompartilhado;
+    private Home parentHome; 
 
-    public PaginaAplicativos() {
+    public PaginaAplicativos(Home parent) {
+        super(parent, "Aplicativos", Dialog.ModalityType.APPLICATION_MODAL);
+        this.parentHome = parent;
         configurarJanela();
 
         criarMenuAplicativos();
         criarPainelConteudo();
 
         adicionarComponentes();
-        exibirJanela();
+        criarEAtualizarTabela();
     }
 
     private void configurarJanela() {
         setTitle("Aplicativos");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE); 
         setSize(600, 400);
         setLayout(new BorderLayout());
     }
@@ -37,35 +41,35 @@ public class PaginaAplicativos extends JFrame {
 
     private void criarMenuAplicativos() {
         menuAplicativos = new MenuLateral();
-
+    
         JLabel rotuloTitulo = new JLabel("MENU");
         rotuloTitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
         rotuloTitulo.setFont(new Font("Arial", Font.BOLD, 18));
-
+    
         JButton botao1 = menuAplicativos.criarBotao("Cadastrar Aplicativo", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 abrirJanelaCadastroAplicativo();
             }
         });
-
+    
         JButton botao2 = menuAplicativos.criarBotao("Editar Aplicativo", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Ação para CLIENTES");
+                mostrarMensagem("Ação para CLIENTES");
             }
         });
-
+    
         JButton botao3 = menuAplicativos.criarBotao("Mostrar Aplicativos", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Ação para CLIENTES");
+                mostrarMensagem("Ação para CLIENTES");
             }
         });
-
+    
         JButton botao4 = menuAplicativos.criarBotao("Mostrar Assinantes do App", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Ação para CLIENTES");
+                mostrarMensagem("Ação para CLIENTES");
             }
         });
-
+    
         menuAplicativos.adicionarEspacamento(20);
         menuAplicativos.add(rotuloTitulo);
         menuAplicativos.adicionarEspacamento(20);
@@ -76,29 +80,46 @@ public class PaginaAplicativos extends JFrame {
         menuAplicativos.add(botao3);
         menuAplicativos.adicionarEspacamento(20);
         menuAplicativos.add(botao4);
-
-    }
+    
+    }    
 
     private void adicionarComponentes() {
         add(menuAplicativos, BorderLayout.WEST);
     }
 
-    private void exibirJanela() {
-        setVisible(true);
+    private void abrirJanelaCadastroAplicativo() {
+        CadastroAplicativo cadastro = new CadastroAplicativo(this);
+        cadastro.setLocationRelativeTo(this); // Define a localização relativa à janela pai
+        cadastro.setVisible(true);
+    }
+    
+    private void mostrarMensagem(String mensagem) {
+        JOptionPane.showMessageDialog(this, mensagem);
     }
 
-    private void abrirJanelaCadastroAplicativo() {
-        SwingUtilities.invokeLater(() -> {
-            CadastroAplicativoFrame cadastroFrame = new CadastroAplicativoFrame();
-            cadastroFrame.setVisible(true);
-        });
+    private void criarEAtualizarTabela() {
+       
+        CatalogoAplicativos catalogoAplicativos = new CatalogoAplicativos();
+        catalogoAplicativos.loadFromFile();
+        CatalogoAplicativosViewModel modeloTabela = new CatalogoAplicativosViewModel(catalogoAplicativos);
+    
+        JTable tabelaAplicativos = new JTable(modeloTabela);
+    
+        JScrollPane scrollPane = new JScrollPane(tabelaAplicativos);
+
+        painelConteudoCompartilhado.removeAll();
+    
+        painelConteudoCompartilhado.add(scrollPane, BorderLayout.CENTER);
+    
+        painelConteudoCompartilhado.revalidate();
+        painelConteudoCompartilhado.repaint();
     }
+
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new PaginaClientes();
-            }
+        SwingUtilities.invokeLater(() -> {
+            Home home = new Home(); 
+            new PaginaAplicativos(home);
         });
     }
 }
