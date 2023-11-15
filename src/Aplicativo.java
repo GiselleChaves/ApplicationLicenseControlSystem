@@ -32,10 +32,6 @@ public class Aplicativo {
     return codigo;
   }
 
-  public void setCodigo(int codigo) {
-    this.codigo = codigo;
-  }
-
   public String getNome() {
     return nome;
   }
@@ -64,7 +60,4 @@ public class Aplicativo {
     return contAplicativos;
   }
 
-  public void setContAplicativos(int contAplicativos) {
-    this.contAplicativos = contAplicativos;
-  }
 }

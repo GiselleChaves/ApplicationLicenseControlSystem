@@ -27,12 +27,15 @@ public class CatalogoAplicativo {
     .forEach(System.out::println);
   }            
 
-  public void alterarNomeAplicativo(Predicate<Aplicativo> condicao, Consumer<Aplicativo> oper){
+  //OK, FUNCIONANDO!
+  public boolean alterarNomeAplicativo(int codigo, String nome){
     for (Aplicativo app : listaAplicativos){
-      if (condicao.test(app)) {
-        oper.accept(app);
+      if(app.getCodigo() == codigo){
+        app.setNome(nome);
+        return true;
       }
     }
+    return false;
   }
 
   //OK, FUNCIONANDO!
