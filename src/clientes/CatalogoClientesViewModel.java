@@ -5,7 +5,7 @@ import javax.swing.table.AbstractTableModel;
 public class CatalogoClientesViewModel extends AbstractTableModel {
     private CatalogoClientes clientes;
     private final String[] nomesDasColunas = {
-        "Codigo",
+        "Cpf",
         "Nome",
         "Email"
     };

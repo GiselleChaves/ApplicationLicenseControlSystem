@@ -18,10 +18,8 @@ public class PaginaClientes extends JDialog {
         super(parent, "Clientes", Dialog.ModalityType.APPLICATION_MODAL);
         this.parentHome = parent;
         configurarJanela();
-
         criarMenuClientes();
         criarPainelConteudo();
-
         adicionarComponentes();
         criarEAtualizarTabela();
     }
@@ -40,7 +38,7 @@ public class PaginaClientes extends JDialog {
     private void criarMenuClientes() {
         menuClientes = new MenuLateral();
 
-        JLabel rotuloTitulo = new JLabel("MENU");
+        JLabel rotuloTitulo = new JLabel("MENU CLIENTE");
         rotuloTitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
         rotuloTitulo.setFont(new Font("Arial", Font.BOLD, 18));
 

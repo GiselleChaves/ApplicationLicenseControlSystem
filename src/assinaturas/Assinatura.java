@@ -22,7 +22,7 @@ public class Assinatura {
     this.mesInicioVigencia = mesInicioVigencia;
     this.anoInicioVigencia = anoInicioVigencia;
     if(listaAssinaturas == null){
-      listaAssinaturas = new ArrayList();
+      listaAssinaturas = new ArrayList<Assinatura>();
     }
   }
 

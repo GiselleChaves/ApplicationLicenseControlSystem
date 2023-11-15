@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class CadastroCliente extends JDialog {
 
-    private JTextField codigoField;
+    private JTextField cpfField;
     private JTextField nomeField;
     private JTextField emailField;
 
@@ -28,8 +28,8 @@ public class CadastroCliente extends JDialog {
         // Adiciona um espaçamento de 10 pixels em todas as bordas do JPanel
         panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-        JLabel lblCodigo = new JLabel("Código:");
-        codigoField = new JTextField();
+        JLabel lblCpf = new JLabel("Cpf:");
+        cpfField = new JTextField();
         JLabel lblNome = new JLabel("Nome:");
         nomeField = new JTextField();
         JLabel lblEmail = new JLabel("E-mail:");
@@ -43,8 +43,8 @@ public class CadastroCliente extends JDialog {
             }
         });
 
-        panel.add(lblCodigo);
-        panel.add(codigoField);
+        panel.add(lblCpf);
+        panel.add(cpfField);
         panel.add(lblNome);
         panel.add(nomeField);
         panel.add(lblEmail);
@@ -58,14 +58,15 @@ public class CadastroCliente extends JDialog {
     }
 
     private void cadastrarCliente() {
-        int codigo = Integer.parseInt(codigoField.getText());
+        int cpf = Integer.parseInt(cpfField.getText());
         String nome = nomeField.getText();
         String email = emailField.getText();
+        
 
         // Código para cadastrar o cliente
 
         // Limpe os campos após cadastrar o cliente
-        codigoField.setText("");
+        cpfField.setText("");
         nomeField.setText("");
         emailField.setText("");
 
