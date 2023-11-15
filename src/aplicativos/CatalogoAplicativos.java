@@ -95,14 +95,4 @@ public class CatalogoAplicativos {
             e.printStackTrace();
         }
     }
-
-  
 }
-/*public void alterarDadosAplicativo(Predicate<Aplicativo> condicao, Function<Aplicativo, T> oper){
-    for (int i = 0; i < listaAplicativos.size(); i++) {
-      Aplicativo app = listaAplicativos.get(i);
-      if (condicao.test(app)) {
-          app.oper(i, oper.apply(app));
-      }
-    }
-  } */

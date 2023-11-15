@@ -1,6 +1,6 @@
 package assinaturas;
-//import java.util.List;
-//import java.util.ArrayList;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Assinatura {
   private String codigoAssinatura;
@@ -10,25 +10,31 @@ public class Assinatura {
   private String anoInicioVigencia;
   private String mesFimVigencia;
   private String anoFimVigencia;
-  //List<Cliente> listaClientes;
+  List<Assinatura> listaAssinaturas;
+
 
 
   public Assinatura(String codigoAssinatura, String codigoApp, String cpfCliente, String mesInicioVigencia,
-                    String anoInicioVigencia, String mesFimVigencia, String anoFimVigencia) {
+                    String anoInicioVigencia) {
     this.codigoAssinatura = codigoAssinatura;
     this.codigoApp = codigoApp;
     this.cpfCliente = cpfCliente;
     this.mesInicioVigencia = mesInicioVigencia;
     this.anoInicioVigencia = anoInicioVigencia;
-    this.mesFimVigencia = mesFimVigencia;
-    this.anoFimVigencia = anoFimVigencia;
-    //if(listaClientes == null){
-      //listaClientes = new ArrayList();
+    if(listaAssinaturas == null){
+      listaAssinaturas = new ArrayList();
     }
+  }
 
-  public void AdicionarAssinatura(){}
-  public void mostrarAssinantes(){}
+  public void AdicionarAssinatura(Assinatura assinatura){
+    listaAssinaturas.add(assinatura);
+  }
 
+  public void mostrarAssinantes(){
+    for(Assinatura assinatura: listaAssinaturas){
+      System.out.println(assinatura.getCpfCliente());
+    }
+  }
 
   public String getCodigoAssinatura() {
     return codigoAssinatura;
@@ -81,9 +87,9 @@ public class Assinatura {
 
 
   public String getMesFimVigencia() {
-    return mesFimVigencia;
+    String informação = "Sem fim previsto.";
+    return informação;
   }
-
 
   public void setMesFimVigencia(String mesFimVigencia) {
     this.mesFimVigencia = mesFimVigencia;
@@ -91,7 +97,8 @@ public class Assinatura {
 
 
   public String getAnoFimVigencia() {
-    return anoFimVigencia;
+    String informação = "Sem fim previsto.";
+    return informação;
   }
 
 

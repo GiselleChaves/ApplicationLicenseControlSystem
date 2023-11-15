@@ -1,18 +1,18 @@
 package clientes;
 
 public class Cliente {
-    private int codigo;
+    private int cpf;
     private String nome;
     private String email;
 
-    public Cliente(int codigo, String nome, String email) {
-        this.codigo = codigo;
+    public Cliente(int cpf, String nome, String email) {
+        this.cpf = cpf;
         this.nome = nome;
         this.email = email;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getCpf() {
+        return cpf;
     }
 
     public String getNome() {
@@ -24,14 +24,14 @@ public class Cliente {
     }
 
     public String toLineFile() {
-        return codigo + "," + nome + "," + email;
+        return cpf + "," + nome + "," + email;
     }
 
     public static Cliente fromLineFile(String line) {
         String[] tokens = line.split(",");
-        int codigo = Integer.parseInt(tokens[0]);
+        int cpf = Integer.parseInt(tokens[0]);
         String nome = tokens[1];
         String email = tokens[2];
-        return new Cliente(codigo, nome, email);
+        return new Cliente(cpf, nome, email);
     }
 }
