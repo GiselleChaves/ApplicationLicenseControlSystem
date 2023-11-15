@@ -1,5 +1,4 @@
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +15,7 @@ public class PaginaClientes extends JDialog {
 
     public PaginaClientes(Home parent) {
         super(parent, "Clientes", Dialog.ModalityType.APPLICATION_MODAL);
-        this.parentHome = parent;
+        this.   parentHome = parent;
         configurarJanela();
         criarMenuClientes();
         criarPainelConteudo();
@@ -50,13 +49,12 @@ public class PaginaClientes extends JDialog {
 
         JButton botao2 = menuClientes.criarBotao("Editar Cliente", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                abrirJanelaEditarCliente();
             }
         });
 
         JButton botao3 = menuClientes.criarBotao("Mostrar Clientes", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                
+                abrirJanelaMostrarCliente();
             }
         });
 
@@ -110,10 +108,10 @@ public class PaginaClientes extends JDialog {
         cadastro.setVisible(true);
     }
 
-    private void abrirJanelaEditarCliente() {
-        EditarCliente editar = new EditarCliente(this);
-        editar.setLocationRelativeTo(this); // Define a localização relativa à janela pai
-        editar.setVisible(true);
+    private void abrirJanelaMostrarCliente() {
+        MostrarCliente mostrarCliente = new MostrarCliente(this);
+        mostrarCliente.setLocationRelativeTo(this); // Define a localização relativa à janela pai
+        mostrarCliente.setVisible(true);
     }
     
     public static void main(String[] args) {
