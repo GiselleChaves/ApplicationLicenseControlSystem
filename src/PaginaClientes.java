@@ -50,7 +50,7 @@ public class PaginaClientes extends JDialog {
 
         JButton botao2 = menuClientes.criarBotao("Editar Cliente", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                
+                abrirJanelaEditarCliente();
             }
         });
 
@@ -108,6 +108,12 @@ public class PaginaClientes extends JDialog {
         CadastroCliente cadastro = new CadastroCliente(this);
         cadastro.setLocationRelativeTo(this); // Define a localização relativa à janela pai
         cadastro.setVisible(true);
+    }
+
+    private void abrirJanelaEditarCliente() {
+        EditarCliente editar = new EditarCliente(this);
+        editar.setLocationRelativeTo(this); // Define a localização relativa à janela pai
+        editar.setVisible(true);
     }
     
     public static void main(String[] args) {

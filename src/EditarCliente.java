@@ -7,7 +7,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class CadastroCliente extends JDialog {
+public class EditarCliente extends JDialog {
 
     private JTextField cpfField;
     private JTextField nomeField;
@@ -15,8 +15,8 @@ public class CadastroCliente extends JDialog {
 
     private PaginaClientes paginaClientes; 
 
-    public CadastroCliente(PaginaClientes parent) {
-        super(parent, "Cadastro de Cliente", Dialog.ModalityType.APPLICATION_MODAL);
+    public EditarCliente(PaginaClientes parent) {
+        super(parent, "Editar de Cliente", Dialog.ModalityType.APPLICATION_MODAL);
         this.paginaClientes = parent;
         initComponents();
     }
@@ -95,4 +95,6 @@ public class CadastroCliente extends JDialog {
             cadastro.setVisible(true);
         });
     }
+}
+
 }
