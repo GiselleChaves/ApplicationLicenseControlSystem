@@ -19,7 +19,7 @@ public class CatalogoClientesViewModel extends AbstractTableModel {
     }
 
     public int getRowCount() {
-        return clientes.getQtdade();
+        return clientes.getQuantidade();
     }
 
     public int getColumnCount() {
@@ -29,7 +29,7 @@ public class CatalogoClientesViewModel extends AbstractTableModel {
     public Object getValueAt(int row, int col) {
         Cliente cliente = clientes.getClienteNaLinha(row);
         switch (col) {
-            case 0: return (Object) (cliente.getCodigo());
+            case 0: return (Object) (cliente.getCpf());
             case 1: return (Object) (cliente.getNome());
             case 2: return (Object) (cliente.getEmail());
             default: return (Object) "none";
