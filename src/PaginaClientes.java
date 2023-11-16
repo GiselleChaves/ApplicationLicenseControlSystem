@@ -63,6 +63,12 @@ public class PaginaClientes extends JDialog {
             }
         });
 
+        JButton botao5 = menuClientes.criarBotao("Cobranças", new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+               
+            }
+        });
+
         menuClientes.adicionarEspacamento(20);
         menuClientes.add(rotuloTitulo);
         menuClientes.adicionarEspacamento(20);
@@ -73,6 +79,8 @@ public class PaginaClientes extends JDialog {
         menuClientes.add(botao3);
         menuClientes.adicionarEspacamento(10);
         menuClientes.add(botao4);
+        menuClientes.adicionarEspacamento(10);
+        menuClientes.add(botao5);
     }
 
     private void adicionarComponentes() {

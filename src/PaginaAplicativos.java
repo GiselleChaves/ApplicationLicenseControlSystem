@@ -69,6 +69,18 @@ public class PaginaAplicativos extends JDialog {
                 mostrarMensagem("Ação para CLIENTES");
             }
         });
+
+        JButton botao5 = menuAplicativos.criarBotao("Mostrar Assinantes do Aplicativo", new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                mostrarMensagem("Ação para CLIENTES");
+            }
+        });
+
+        JButton botao6 = menuAplicativos.criarBotao("Mostrar Faturamento de Aplicativo", new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                mostrarMensagem("Ação para CLIENTES");
+            }
+        });
     
         menuAplicativos.adicionarEspacamento(20);
         menuAplicativos.add(rotuloTitulo);
@@ -80,6 +92,10 @@ public class PaginaAplicativos extends JDialog {
         menuAplicativos.add(botao3);
         menuAplicativos.adicionarEspacamento(20);
         menuAplicativos.add(botao4);
+        menuAplicativos.adicionarEspacamento(20);
+        menuAplicativos.add(botao5);
+        menuAplicativos.adicionarEspacamento(20);
+        menuAplicativos.add(botao6);
     
     }    
 

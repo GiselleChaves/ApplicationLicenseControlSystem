@@ -1,3 +1,4 @@
 CPF: 1012, Nome: Ana Paula, Email: ana@email.com
 CPF: 1013, Nome: Claudio Antonio, Email: claudio@email.com
 CPF: 1014, Nome: Camila Andrade, Email: camila@email.com
+CPF: 1689, Nome: Liliane Gonçalves, Email: liliane@email.com

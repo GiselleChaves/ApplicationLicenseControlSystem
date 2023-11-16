@@ -47,10 +47,18 @@ public class PaginaAssinaturas extends JDialog {
             }
         });
 
+        JButton botao2 = menuAssinaturas.criarBotao("Gerenciar Assinaturas", new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Ação para CLIENTES");
+            }
+        });
+
         menuAssinaturas.adicionarEspacamento(20);
         menuAssinaturas.add(rotuloTitulo);
         menuAssinaturas.adicionarEspacamento(20);
         menuAssinaturas.add(botao1);
+        menuAssinaturas.adicionarEspacamento(20);
+        menuAssinaturas.add(botao2);
     }
 
     private void adicionarComponentes() {
