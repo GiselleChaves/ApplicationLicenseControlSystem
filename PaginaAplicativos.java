@@ -4,8 +4,6 @@ import clientes.*;
 import aplicativos.*;
 import assinaturas.*;
 
-import clientes.CatalogoClientesViewModel;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,9 +13,15 @@ public class PaginaAplicativos extends JDialog {
     private PainelCompartilhado painelConteudoCompartilhado;
     private Home parentHome; 
 
+    private CatalogoAplicativos catalogoAplicativos;
+
     public PaginaAplicativos(Home parent) {
         super(parent, "Aplicativos", Dialog.ModalityType.APPLICATION_MODAL);
         this.parentHome = parent;
+
+        catalogoAplicativos = new CatalogoAplicativos();  
+        catalogoAplicativos.loadFromFile();  
+
         configurarJanela();
 
         criarMenuAplicativos();
@@ -26,6 +30,11 @@ public class PaginaAplicativos extends JDialog {
         adicionarComponentes();
         criarEAtualizarTabela();
     }
+
+    public CatalogoAplicativos getCatalogoAplicativos() {
+        return catalogoAplicativos;
+    }
+
 
     private void configurarJanela() {
         setTitle("Aplicativos");
@@ -54,7 +63,7 @@ public class PaginaAplicativos extends JDialog {
     
         JButton botao2 = menuAplicativos.criarBotao("Editar Aplicativo", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                mostrarMensagem("Ação para CLIENTES");
+                abrirJanelaEditarAplicativo();
             }
         });
     
@@ -102,18 +111,12 @@ public class PaginaAplicativos extends JDialog {
     private void adicionarComponentes() {
         add(menuAplicativos, BorderLayout.WEST);
     }
-
-    private void abrirJanelaCadastroAplicativo() {
-        CadastroAplicativo cadastro = new CadastroAplicativo(this);
-        cadastro.setLocationRelativeTo(this); // Define a localização relativa à janela pai
-        cadastro.setVisible(true);
-    }
     
     private void mostrarMensagem(String mensagem) {
         JOptionPane.showMessageDialog(this, mensagem);
     }
 
-    private void criarEAtualizarTabela() {
+    public void criarEAtualizarTabela() {
        
         CatalogoAplicativos catalogoAplicativos = new CatalogoAplicativos();
         catalogoAplicativos.loadFromFile();
@@ -129,6 +132,20 @@ public class PaginaAplicativos extends JDialog {
     
         painelConteudoCompartilhado.revalidate();
         painelConteudoCompartilhado.repaint();
+    }
+
+    //Cadastrar cliente.
+    private void abrirJanelaCadastroAplicativo() {
+        CadastroAplicativo  cadastro = new CadastroAplicativo(this);
+        cadastro.setLocationRelativeTo(this); // Define a localização relativa à janela pai
+        cadastro.setVisible(true);
+    }
+
+    //Edtiar cliente
+    private void abrirJanelaEditarAplicativo() {
+        EditarAplicativo editar = new EditarAplicativo(this);
+        editar.setLocationRelativeTo(this); // Define a localização relativa à janela pai
+        editar.setVisible(true);
     }
 
     

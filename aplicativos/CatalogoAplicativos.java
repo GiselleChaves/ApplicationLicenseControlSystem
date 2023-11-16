@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import clientes.Cliente;
+
 public class CatalogoAplicativos {
     List<Aplicativo> listaAplicativos;
     private int contAplicativos;
@@ -25,6 +27,14 @@ public class CatalogoAplicativos {
     public void cadastraAppNoCatalogo(Aplicativo app){
         listaAplicativos.add(app);
         contAplicativos++;
+    }
+
+    //getby
+    public Aplicativo getAplicativoByCodigo(int codigo) {
+        return listaAplicativos.stream()
+                .filter(aplicativo -> aplicativo.getCodigo() == codigo)
+                .findFirst()
+                .orElse(null);
     }
 
     //OK, FUNCIONANDO!
