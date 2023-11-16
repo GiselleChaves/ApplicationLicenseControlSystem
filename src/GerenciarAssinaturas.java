@@ -8,12 +8,11 @@ import clientes.*;
 import assinaturas.*;
 import aplicativos.*;
 
-public class PaginaAssinaturas extends JDialog {
+public class GerenciarAssinaturas extends JDialog {
     private MenuLateral menuAssinaturas;
     private PainelCompartilhado painelConteudoCompartilhado;
-    private GerenciarAssinaturas gerenciarAssinaturas;
 
-    public PaginaAssinaturas(Frame parent) {
+    public GerenciarAssinaturas(Frame parent, PaginaAssinaturas paginaAssinaturas) {
         super(parent, "Assinaturas", Dialog.ModalityType.APPLICATION_MODAL); 
         configurarJanela();
 
@@ -21,6 +20,9 @@ public class PaginaAssinaturas extends JDialog {
         criarPainelConteudo();
 
         adicionarComponentes();
+    }
+
+    public GerenciarAssinaturas(PaginaAssinaturas paginaAssinaturas) {
     }
 
     private void configurarJanela() {
@@ -42,15 +44,15 @@ public class PaginaAssinaturas extends JDialog {
         rotuloTitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
         rotuloTitulo.setFont(new Font("Arial", Font.BOLD, 18));
 
-        JButton botao1 = menuAssinaturas.criarBotao("Mostrar Assinaturas", new ActionListener() {
+        JButton botao1 = menuAssinaturas.criarBotao("Nova Assinatura", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                
+                JOptionPane.showMessageDialog(null, "Ação para CLIENTES");
             }
         });
 
-        JButton botao2 = menuAssinaturas.criarBotao("Gerenciar Assinaturas", new ActionListener() {
+        JButton botao2 = menuAssinaturas.criarBotao("Cancelar Assinatura", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                exibirGerenciarAssinaturas();
+                JOptionPane.showMessageDialog(null, "Ação para CLIENTES");
             }
         });
 
@@ -65,13 +67,6 @@ public class PaginaAssinaturas extends JDialog {
     private void adicionarComponentes() {
         add(menuAssinaturas, BorderLayout.WEST);
     }
-
-    
-    private void exibirGerenciarAssinaturas() {
-        gerenciarAssinaturas = new GerenciarAssinaturas(this);
-        gerenciarAssinaturas.setVisible(true);
-    }
-
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {

@@ -12,13 +12,17 @@ import java.awt.event.ActionListener;
 public class Home extends JFrame {
     private MenuLateral menuLateral;
     private PainelCompartilhado painelConteudoCompartilhado;
+    
     private PaginaClientes paginaClientes; 
 
     public Home() {
         configurarJanelaPrincipal();
+
         criarPainelMenuLateral();
         criarPainelConteudo();
+
         adicionarComponentes();
+
         exibirJanela();
     }
 
