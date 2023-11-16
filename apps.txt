@@ -1,0 +1,7 @@
+
+CODIGO: 100, Nome: Desenho Mágico, SO: Android, EMAIL:5.99
+CODIGO: 110, Nome: Desenho Mágico, SO: IOS, EMAIL:7.99
+CODIGO: 200, Nome: Onde Estou, SO: Android, EMAIL:24.5
+CODIGO: 210, Nome: Onde Estou, SO: IOS, EMAIL:26.5
+CODIGO: 300, Nome: Agenda Eletrônica, SO: Android, EMAIL:14.57
+CODIGO: 310, Nome: Agenda Eletrônica, SO: IOS, EMAIL:19.2

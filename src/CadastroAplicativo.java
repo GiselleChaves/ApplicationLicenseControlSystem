@@ -3,6 +3,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.EmptyBorder;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class CadastroAplicativo extends JDialog {
     private JTextField codigoField;
@@ -62,13 +65,13 @@ public class CadastroAplicativo extends JDialog {
     }
 
     private void cadastrarAplicativo() {
-        try {
+        // Seu código para cadastrar o aplicativo
+        //try {
             int codigo = Integer.parseInt(codigoField.getText());
             String nome = nomeField.getText();
             String so = soField.getText();
             double valorMensalAssinatura = Double.parseDouble(valorMensalField.getText());
-    
-            // Seu código para cadastrar o aplicativo
+            salvarAppEmArquivo(codigo, nome, so, valorMensalAssinatura);  
     
             // Limpe os campos após cadastrar o aplicativo
             codigoField.setText("");
@@ -77,10 +80,18 @@ public class CadastroAplicativo extends JDialog {
             valorMensalField.setText("");
     
             dispose();
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Erro: Preencha os campos corretamente.", "Erro de Cadastro", JOptionPane.ERROR_MESSAGE);
+    } 
+
+    private void salvarAppEmArquivo(int codigo, String nome, String so, double email) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("apps.txt", true))) {
+            // Append para adicionar ao final do arquivo
+            writer.write("CODIGO: " + codigo + ", Nome: " + nome + ", SO: " + so + ", EMAIL:" + email);
+            writer.newLine(); // Adicionar uma nova linha para cada entrada
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+
     
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {

@@ -42,7 +42,7 @@ public class PaginaAplicativos extends JDialog {
     private void criarMenuAplicativos() {
         menuAplicativos = new MenuLateral();
     
-        JLabel rotuloTitulo = new JLabel("MENU");
+        JLabel rotuloTitulo = new JLabel("MENU APLICATIVOS");
         rotuloTitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
         rotuloTitulo.setFont(new Font("Arial", Font.BOLD, 18));
     
@@ -115,7 +115,7 @@ public class PaginaAplicativos extends JDialog {
         painelConteudoCompartilhado.repaint();
     }
 
-
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             Home home = new Home(); 
