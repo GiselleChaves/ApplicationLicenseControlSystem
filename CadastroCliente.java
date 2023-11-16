@@ -7,84 +7,86 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import clientes.*;
+
+
 public class CadastroCliente extends JDialog {
 
-    private JTextField cpfField;
-    private JTextField nomeField;
-    private JTextField emailField;
+    private JTextField campoCpf;
+    private JTextField campoNome;
+    private JTextField campoEmail;
 
-    private PaginaClientes paginaClientes; 
+    private CatalogoClientes catalogoClientes;
+    private PaginaClientes paginaClientes;
+    
 
     public CadastroCliente(PaginaClientes parent) {
         super(parent, "Cadastro de Cliente", Dialog.ModalityType.APPLICATION_MODAL);
         this.paginaClientes = parent;
-        initComponents();
+        this.catalogoClientes = parent.getCatalogoClientes();
+        configurarJanela();
+        criarComponentes();
     }
 
-    private void initComponents() {
-        setSize(400, 300);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    private void configurarJanela() {
+        setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        setSize(400, 200);
+        setLayout(new GridLayout(4, 2, 10, 10));
+    }
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+    private void criarComponentes() {
+        campoCpf = new JTextField();
+        campoNome = new JTextField();
+        campoEmail = new JTextField();
 
-        // Adiciona um espaçamento de 10 pixels em todas as bordas do JPanel
-        panel.setBorder(new EmptyBorder(10, 10, 10, 10));
+        JLabel rotuloCpf = new JLabel("CPF:");
+        JLabel rotuloNome = new JLabel("Nome:");
+        JLabel rotuloEmail = new JLabel("Email:");
 
-        JLabel lblCpf = new JLabel("Cpf:");
-        cpfField = new JTextField();
-        JLabel lblNome = new JLabel("Nome:");
-        nomeField = new JTextField();
-        JLabel lblEmail = new JLabel("E-mail:");
-        emailField = new JTextField();
-
-        JButton btnCadastrar = new JButton("Cadastrar");
-        btnCadastrar.addActionListener(new ActionListener() {
-            @Override
+        JButton botaoSalvar = new JButton("Salvar");
+        botaoSalvar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 cadastrarCliente();
             }
-
-        
         });
 
-        panel.add(lblCpf);
-        panel.add(cpfField);
-        panel.add(lblNome);
-        panel.add(nomeField);
-        panel.add(lblEmail);
-        panel.add(emailField);
+        JButton botaoCancelar = new JButton("Cancelar");
+        botaoCancelar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
-        panel.add(Box.createVerticalStrut(10));
-
-        panel.add(btnCadastrar);
-
-        getContentPane().add(panel);
+        add(rotuloCpf);
+        add(campoCpf);
+        add(rotuloNome);
+        add(campoNome);
+        add(rotuloEmail);
+        add(campoEmail);
+        add(botaoSalvar);
+        add(botaoCancelar);
     }
 
     private void cadastrarCliente() {
-        // Código para cadastrar o cliente
-        int cpf = Integer.parseInt(cpfField.getText());
-        String nome = nomeField.getText();
-        String email = emailField.getText();
-        salvarEmArquivo(cpf, nome, email);        
 
-        // Limpe os campos após cadastrar o cliente
-        cpfField.setText("");
-        nomeField.setText("");
-        emailField.setText("");
+            String cpf = campoCpf.getText();
+            String nome = campoNome.getText();
+            String email = campoEmail.getText();
 
-        dispose();
-    }
+            Cliente cliente = catalogoClientes.getClienteByCpf(cpf);
+            System.out.println(cliente);
 
-    private void salvarEmArquivo(int cpf, String nome, String email) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("clientes/clientes.txt", true))) {
-            // Append para adicionar ao final do arquivo
-            writer.write(cpf + "," + nome + "," + email);
-            writer.newLine(); // Adicionar uma nova linha para cada entrada
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            if (cliente == null) {
+                Cliente novoCliente = new Cliente(cpf, nome, email);
+                catalogoClientes.cadastrarCliente(novoCliente);
+
+                catalogoClientes.saveToFile(); // Salva as alterações no arquivo
+                paginaClientes.criarEAtualizarTabela(); // Atualiza a tabela na página principal
+                JOptionPane.showMessageDialog(this, "Alterações salvas com sucesso!");
+                dispose(); // Fecha a janela de edição
+            } else {
+                JOptionPane.showMessageDialog(this, "Já existe um cliente com esse CPF.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
     }
 
     public static void main(String[] args) {
