@@ -13,6 +13,7 @@ public class CatalogoClientesViewModel extends AbstractTableModel {
     public CatalogoClientesViewModel(CatalogoClientes clientes) {
         this.clientes = clientes;
     }
+    
 
     public String getColumnName(int col) {
         return nomesDasColunas[col];

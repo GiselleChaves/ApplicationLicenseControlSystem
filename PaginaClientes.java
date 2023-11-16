@@ -11,16 +11,26 @@ public class PaginaClientes extends JDialog {
     private MenuLateral menuClientes;
     private PainelCompartilhado painelConteudoCompartilhado;
 
+    private CatalogoClientes catalogoClientes;
+
     private Home parentHome; 
 
     public PaginaClientes(Home parent) {
         super(parent, "Clientes", Dialog.ModalityType.APPLICATION_MODAL);
         this.   parentHome = parent;
+
+        catalogoClientes = new CatalogoClientes();  
+        catalogoClientes.loadFromFile();  
+
         configurarJanela();
         criarMenuClientes();
         criarPainelConteudo();
         adicionarComponentes();
         criarEAtualizarTabela();
+    }
+
+    public CatalogoClientes getCatalogoClientes() {
+        return catalogoClientes;
     }
 
     private void configurarJanela() {
@@ -49,6 +59,7 @@ public class PaginaClientes extends JDialog {
 
         JButton botao2 = menuClientes.criarBotao("Editar Cliente", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                abrirJanelaEditarCliente();
             }
         });
 
@@ -88,7 +99,7 @@ public class PaginaClientes extends JDialog {
     }
 
 
-    private void criarEAtualizarTabela() {
+    public void criarEAtualizarTabela() {
        
         CatalogoClientes catalogoClientes = new CatalogoClientes();
         catalogoClientes.loadFromFile();
@@ -113,6 +124,13 @@ public class PaginaClientes extends JDialog {
         CadastroCliente cadastro = new CadastroCliente(this);
         cadastro.setLocationRelativeTo(this); // Define a localização relativa à janela pai
         cadastro.setVisible(true);
+    }
+
+    //Edtiar cliente
+    private void abrirJanelaEditarCliente() {
+        EditarCliente editar = new EditarCliente(this);
+        editar.setLocationRelativeTo(this); // Define a localização relativa à janela pai
+        editar.setVisible(true);
     }
     
     public static void main(String[] args) {

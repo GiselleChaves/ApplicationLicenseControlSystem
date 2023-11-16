@@ -38,6 +38,14 @@ public class CatalogoClientes {
         return listaClientes.stream();
     }
 
+    public Cliente getClienteByCpf(String cpf) {
+        return listaClientes.stream()
+                .filter(cliente -> cliente.getCpf().equals(cpf))
+                .findFirst()
+                .orElse(null);
+    }
+    
+
     public void loadFromFile() {
         Path clientesFilePath = Path.of("clientes/clientes.txt");
         try (Stream<String> clientesStream = Files.lines(clientesFilePath)) {
