@@ -93,7 +93,7 @@ public class PaginaAplicativos extends JDialog {
 
         JButton botao5 = menuAplicativos.criarBotao("SO: mostrar faturamento", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                mostrarMensagem("IMPLEMENTAR");
+                abrirJanelaFaturamentoSO();
                 /*Mostrar o faturamento por ios e por android */
             }
         });
@@ -174,6 +174,13 @@ public class PaginaAplicativos extends JDialog {
         MostrarFaturamentoApp mostrar = new MostrarFaturamentoApp(this);
         mostrar.setLocationRelativeTo(this); // Define a localização relativa à janela pai
         mostrar.setVisible(true);
+    }
+
+     //SO Faturamento
+     private void abrirJanelaFaturamentoSO() {
+        FaturamentoSO faturamentoSo = new FaturamentoSO(this);
+        faturamentoSo.setLocationRelativeTo(this); // Define a localização relativa à janela pai
+        faturamentoSo.setVisible(true);
     }
     
     public static void main(String[] args) {
