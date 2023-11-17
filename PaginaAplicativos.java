@@ -160,4 +160,3 @@ public class PaginaAplicativos extends JDialog {
         });
     }
 }
-gt

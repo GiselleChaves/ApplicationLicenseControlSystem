@@ -78,7 +78,7 @@ public class PaginaAssinaturas extends JDialog {
             }
         });
 
-        JButton botao3 = menuAssinaturas.criarBotao("Pagamentos em Aberto", new ActionListener() {
+        JButton botao3 = menuAssinaturas.criarBotao("Cobranças", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //IMPLEMENTAR
                 /*Gerar uma lista com os clientes que devem ser cobrados no mês corrente.
