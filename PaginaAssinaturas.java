@@ -78,12 +78,22 @@ public class PaginaAssinaturas extends JDialog {
             }
         });
 
+        JButton botao3 = menuAssinaturas.criarBotao("Pagamentos em Aberto", new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                //IMPLEMENTAR
+                /*Gerar uma lista com os clientes que devem ser cobrados no mês corrente.
+                Para cada cliente listar o nome, o email e o valor a ser cobrado (depende da quantidade de assinaturas do cliente)*/
+            }
+        });
+
         menuAssinaturas.adicionarEspacamento(20);
         menuAssinaturas.add(rotuloTitulo);
         menuAssinaturas.adicionarEspacamento(20);
         menuAssinaturas.add(botao1);
         menuAssinaturas.adicionarEspacamento(20);
         menuAssinaturas.add(botao2);
+        menuAssinaturas.adicionarEspacamento(20);
+        menuAssinaturas.add(botao3);
     }
 
     private void adicionarComponentes() {

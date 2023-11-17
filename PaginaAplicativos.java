@@ -66,28 +66,32 @@ public class PaginaAplicativos extends JDialog {
                 abrirJanelaEditarAplicativo();
             }
         });
+
     
-        JButton botao3 = menuAplicativos.criarBotao("Mostrar Aplicativos", new ActionListener() {
+        JButton botao3 = menuAplicativos.criarBotao("Aplicativo: mostrar assinantes", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                mostrarMensagem("Ação para CLIENTES");
-            }
-        });
-    
-        JButton botao4 = menuAplicativos.criarBotao("Mostrar Assinantes do App", new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                mostrarMensagem("Ação para CLIENTES");
+                mostrarMensagem("IMPLEMENTAR");
             }
         });
 
-        JButton botao5 = menuAplicativos.criarBotao("Mostrar Assinantes do Aplicativo", new ActionListener() {
+        JButton botao4 = menuAplicativos.criarBotao("Aplicativo: mostrar faturamento", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                mostrarMensagem("Ação para CLIENTES");
+                mostrarMensagem("IMPLEMENTAR");
+                /*Listar o faturamento com um determinado aplicativo no mês corrente (supondo que todos os que foram cobrados pagaram). */
             }
         });
 
-        JButton botao6 = menuAplicativos.criarBotao("Mostrar Faturamento de Aplicativo", new ActionListener() {
+        JButton botao5 = menuAplicativos.criarBotao("SO: mostrar faturamento", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                mostrarMensagem("Ação para CLIENTES");
+                mostrarMensagem("IMPLEMENTAR");
+                /*Mostrar o faturamento por ios e por android */
+            }
+        });
+
+        JButton botao6 = menuAplicativos.criarBotao("Faturamento total", new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                mostrarMensagem("IMPLEMENTAR");
+                /*Mostrar a soma do faturamento de todos os aplicativos */
             }
         });
     
