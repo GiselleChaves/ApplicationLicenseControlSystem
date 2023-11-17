@@ -9,7 +9,7 @@ import assinaturas.*;
 import aplicativos.*;
 
 public class GerenciarAssinaturas extends JDialog {
-    private MenuLateral menuAssinaturas;
+    /*private MenuLateral menuAssinaturas;
     private PainelCompartilhado painelConteudoCompartilhado;
 
     public GerenciarAssinaturas(Frame parent, PaginaAssinaturas paginaAssinaturas) {
@@ -75,5 +75,5 @@ public class GerenciarAssinaturas extends JDialog {
                 new PaginaAssinaturas(home);
             }
         });
-    }
+    }*/
 }

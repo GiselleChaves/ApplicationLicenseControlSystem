@@ -13,14 +13,26 @@ public class PaginaAssinaturas extends JDialog {
     private PainelCompartilhado painelConteudoCompartilhado;
     private GerenciarAssinaturas gerenciarAssinaturas;
 
-    public PaginaAssinaturas(Frame parent) {
-        super(parent, "Assinaturas", Dialog.ModalityType.APPLICATION_MODAL); 
-        configurarJanela();
+    CatalogoAssinaturas catalogoAssinaturas;
 
+    private Home parentHome; 
+
+    public PaginaAssinaturas(Home parent) {
+        super(parent, "Assinaturas", Dialog.ModalityType.APPLICATION_MODAL);
+        this.   parentHome = parent;
+        
+        catalogoAssinaturas = new CatalogoAssinaturas();  
+        catalogoAssinaturas.loadFromFile();  
+        
+        configurarJanela();
         criarMenuAssinaturas();
         criarPainelConteudo();
-
         adicionarComponentes();
+        criarEAtualizarTabela();
+    }
+
+    public CatalogoAssinaturas getCatalogoAssinaturas() {
+        return catalogoAssinaturas;
     }
 
     private void configurarJanela() {
@@ -42,15 +54,15 @@ public class PaginaAssinaturas extends JDialog {
         rotuloTitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
         rotuloTitulo.setFont(new Font("Arial", Font.BOLD, 18));
 
-        JButton botao1 = menuAssinaturas.criarBotao("Mostrar Assinaturas", new ActionListener() {
+        JButton botao1 = menuAssinaturas.criarBotao("Cadastrar Assinatura", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                
+                abrirJanelaCadastroAssinatura();
             }
         });
 
         JButton botao2 = menuAssinaturas.criarBotao("Gerenciar Assinaturas", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                exibirGerenciarAssinaturas();
+                //exibirGerenciarAssinaturas();
             }
         });
 
@@ -66,19 +78,44 @@ public class PaginaAssinaturas extends JDialog {
         add(menuAssinaturas, BorderLayout.WEST);
     }
 
+    public void criarEAtualizarTabela() {
+       
+        CatalogoAssinaturas catalogoAssinaturas = new CatalogoAssinaturas();
+        catalogoAssinaturas.loadFromFile();
+        CatalogoAssinaturasViewModel modeloTabela = new CatalogoAssinaturasViewModel(catalogoAssinaturas);
     
-    private void exibirGerenciarAssinaturas() {
+        JTable tabelaAssinaturas = new JTable(modeloTabela);
+    
+        JScrollPane scrollPane = new JScrollPane(tabelaAssinaturas);
+
+        painelConteudoCompartilhado.removeAll();
+    
+        painelConteudoCompartilhado.add(scrollPane, BorderLayout.CENTER);
+    
+        painelConteudoCompartilhado.revalidate();
+        painelConteudoCompartilhado.repaint();
+    }
+
+    
+    /*private void exibirGerenciarAssinaturas() {
         gerenciarAssinaturas = new GerenciarAssinaturas(this);
         gerenciarAssinaturas.setVisible(true);
+    }*/
+
+    //Opções
+
+    //Cadastrar assinatura.
+    private void abrirJanelaCadastroAssinatura() {
+        CadastroAssinatura cadastro = new CadastroAssinatura(this);
+        cadastro.setLocationRelativeTo(this); // Define a localização relativa à janela pai
+        cadastro.setVisible(true);
     }
 
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                JFrame home = new Home();
-                new PaginaAssinaturas(home);
-            }
+        SwingUtilities.invokeLater(() -> {
+            Home home = new Home(); // Altere para Home ao invés de JFrame
+            new PaginaAssinaturas(home);
         });
     }
 }

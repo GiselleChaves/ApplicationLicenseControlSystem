@@ -15,6 +15,7 @@ public class Home extends JFrame {
     
     private PaginaClientes paginaClientes; 
 
+
     public Home() {
         configurarJanelaPrincipal();
 

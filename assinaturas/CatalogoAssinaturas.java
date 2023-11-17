@@ -1,65 +1,65 @@
 package assinaturas;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import clientes.*;
 import assinaturas.*;
 import aplicativos.*;
 
 public class CatalogoAssinaturas {
-  List<Aplicativo> listaAplicativos;
-  private int contAplicativos;
+  List<Assinatura> listaAssinaturas;
+  private int contAssinaturas;
 
   public CatalogoAssinaturas(){
-    listaAplicativos = new ArrayList<>();
-    this.contAplicativos = 0;
+    listaAssinaturas = new ArrayList<>();
+    this.contAssinaturas = 0;
   }
 
-  public int getContAplicativos() {
-    return contAplicativos;
+  public int getContAssinaturas() {
+    return contAssinaturas;
   }
 
-  public void setContAplicativos(int cont) {
-    this.contAplicativos = contAplicativos;
+  public void setContAssinaturas(int cont) {
+    this.contAssinaturas = contAssinaturas;
   }
 
-  public void cadastraAppNoCatalogo(Aplicativo app){
-    listaAplicativos.add(app);
-    contAplicativos++;
+  public void cadastraAssinaturaNoCatalogo(Assinatura app){
+    listaAssinaturas.add(app);
+    contAssinaturas++;
   }
 
-  public void mostraNomeAplicativos(){
-    listaAplicativos
-    .stream()
-    .map(Aplicativo::getNome)
-    .forEach(System.out::println);
-  }            
-
-  public void mostraAssinantesDoApp(){}
-
-  public void alterarDadosAplicativo(Predicate<Aplicativo> condicao, Consumer<Aplicativo> oper){
-    for(Aplicativo app: listaAplicativos){
-      if(condicao.test(app)){
-        oper.accept(app);
-      }
+  public Assinatura getAssinaturaNaLinha(int linha) {
+    if (linha >= listaAssinaturas.size()) {
+        return null;
     }
-  }
+    return listaAssinaturas.get(linha);
+}
 
-  public double mostraFaturamentoAndroid(){
-    return listaAplicativos
-          .stream()
-          .filter(a -> a.getSo().equals("android"))
-          .mapToDouble(a -> a.getValorMensalAssinatura())
-          .sum();
-  }
+  public void loadFromFile() {
+        Path appsFilePath = Path.of("assinaturas/assinaturas.txt");
+        try (Stream<String> appsStream = Files.lines(appsFilePath)) {
+            appsStream.forEach(str -> listaAssinaturas.add(Assinatura.fromLineFile(str)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-  public void mostraFaturamentoIOS(){
-    listaAplicativos
-    .stream()
-    .filter(a -> a.getSo().equals("ios"))
-    .toList();
-  }
-
+    public void saveToFile() {
+        Path appsFilePath = Path.of("assinaturas/assinaturas.txt");
+        try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(appsFilePath, StandardCharsets.UTF_8))) {
+            for (Assinatura assinatura : listaAssinaturas) {
+                writer.println(assinatura.toLineFile());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
   
 }

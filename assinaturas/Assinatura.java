@@ -1,10 +1,13 @@
 package assinaturas;
 import java.util.List;
+
+import aplicativos.Aplicativo;
+
 import java.util.ArrayList;
 
 public class Assinatura {
   private String codigoAssinatura;
-  private String codigoApp;
+  private int codigoApp;
   private String cpfCliente;
   private String mesInicioVigencia;
   private String anoInicioVigencia;
@@ -14,7 +17,7 @@ public class Assinatura {
 
 
 
-  public Assinatura(String codigoAssinatura, String codigoApp, String cpfCliente, String mesInicioVigencia,
+  public Assinatura(String codigoAssinatura, int codigoApp, String cpfCliente, String mesInicioVigencia,
                     String anoInicioVigencia) {
     this.codigoAssinatura = codigoAssinatura;
     this.codigoApp = codigoApp;
@@ -26,7 +29,7 @@ public class Assinatura {
     }
   }
 
-  public void AdicionarAssinatura(Assinatura assinatura){
+  public void adicionarAssinatura(Assinatura assinatura){
     listaAssinaturas.add(assinatura);
   }
 
@@ -46,12 +49,12 @@ public class Assinatura {
   }
 
 
-  public String getCodigoApp() {
+  public int getCodigoApp() {
     return codigoApp;
   }
 
 
-  public void setCodigoApp(String codigoApp) {
+  public void setCodigoApp(int codigoApp) {
     this.codigoApp = codigoApp;
   }
 
@@ -105,5 +108,22 @@ public class Assinatura {
   public void setAnoFimVigencia(String anoFimVigencia) {
     this.anoFimVigencia = anoFimVigencia;
   }
+
+  public String toLineFile() {
+      return codigoAssinatura+ ","+codigoApp+","+cpfCliente+","+mesInicioVigencia+","+anoInicioVigencia;
+  }
+
+  public static Assinatura fromLineFile(String line) {
+    String[] tokens = line.split(",");
+    
+    String codigoAssinatura = tokens[0];
+    int codigoApp = Integer.parseInt(tokens[1]);
+    String cpfCliente = tokens[2];
+    String mesInicio = tokens[3];
+    String anoInicio = tokens[4];
+
+    return new Assinatura(codigoAssinatura, codigoApp, cpfCliente, mesInicio, anoInicio);
+  }
+  
   
 }
