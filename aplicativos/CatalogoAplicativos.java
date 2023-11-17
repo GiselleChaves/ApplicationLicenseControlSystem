@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import clientes.Cliente;
@@ -35,6 +36,14 @@ public class CatalogoAplicativos {
                 .filter(aplicativo -> aplicativo.getCodigo() == codigo)
                 .findFirst()
                 .orElse(null);
+    }
+
+    public double getValorMensalByCodigo(int codigo) {
+        Optional<Aplicativo> aplicativoEncontrado = listaAplicativos.stream()
+                .filter(app -> app.getCodigo() == codigo)
+                .findFirst();
+
+        return aplicativoEncontrado.map(Aplicativo::getValorMensalAssinatura).orElse(0.0);
     }
 
     //OK, FUNCIONANDO!

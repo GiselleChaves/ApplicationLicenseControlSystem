@@ -49,6 +49,12 @@ public class CatalogoAssinaturas {
     return listaAssinaturas.get(linha);
   }
 
+  public List<Assinatura> getAssinaturasByCodigoApp(int codigoApp) {
+    return listaAssinaturas.stream()
+            .filter(assinatura -> assinatura.getCodigoApp() == codigoApp)
+            .collect(Collectors.toList());
+  }
+
   public Assinatura getAssinaturaPorCPFECodigoApp(String cpf, int codigoApp) {
     Optional<Assinatura> assinaturaEncontrada = listaAssinaturas.stream()
         .filter(a -> a.getCpfCliente().equals(cpf) && a.getCodigoApp() == codigoApp)
