@@ -14,6 +14,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import clientes.*;
+import aplicativos.*;
+import assinaturas.*;
 
 
 public class CadastroAssinatura extends JDialog {
@@ -105,35 +107,33 @@ public class CadastroAssinatura extends JDialog {
 
 
     private void cadastrarAssinatura() {
-
-            String codigoAssinatura = campoCodigoAssinatura.getText();
-            String cpf = campoCpf.getText();
-            int codigoAplicativo  = Integer.parseInt(campoCodigoAplicativo.getText());
-            String mesInicio = campoMesInicio.getText();
-            String anoInicio = campoAnoInicio.getText();
-
-            Cliente cliente = catalogoClientes.getClienteByCpf(cpf);
-            Aplicativo aplicativo = catalogoAplicativos.getAplicativoByCodigo(codigoAplicativo);
-
-            if (cliente != null && aplicativo != null) {
-
-                Assinatura novaAssinatura = new Assinatura(codigoAssinatura, codigoAplicativo, cpf, mesInicio, anoInicio);
-                catalogoAssinaturas.cadastraAssinaturaNoCatalogo(novaAssinatura);
-
-                catalogoAssinaturas.saveToFile(); // Salva as alterações no arquivo
-                paginaAssinaturas.criarEAtualizarTabela(); // Atualiza a tabela na página principal
-                JOptionPane.showMessageDialog(this, "Alterações salvas com sucesso!");
-                dispose(); // Fecha a janela de edição
-            } else {
-                JOptionPane.showMessageDialog(this, "CPF/Código: Alguma das informações não foi encontrada em nosso sistema.", "Erro", JOptionPane.ERROR_MESSAGE);
-            }
+        String codigoAssinatura = campoCodigoAssinatura.getText();
+        String cpf = campoCpf.getText();
+        int codigoAplicativo = Integer.parseInt(campoCodigoAplicativo.getText());
+        String mesInicio = campoMesInicio.getText();
+        String anoInicio = campoAnoInicio.getText();
+    
+        Cliente cliente = catalogoClientes.getClienteByCpf(cpf);
+        Aplicativo aplicativo = catalogoAplicativos.getAplicativoByCodigo(codigoAplicativo);
+    
+        if (cliente != null && aplicativo != null) {
+            Assinatura novaAssinatura = new Assinatura(codigoAssinatura, codigoAplicativo, cpf, mesInicio, anoInicio);
+            catalogoAssinaturas.cadastraAssinaturaNoCatalogo(novaAssinatura);
+    
+            catalogoAssinaturas.saveToFile(); // Salva as alterações no arquivo
+            paginaAssinaturas.criarEAtualizarTabela(); // Atualiza a tabela na página principal
+            JOptionPane.showMessageDialog(this, "Assinatura cadastrada com sucesso!");
+            dispose(); // Fecha a janela de cadastro
+        } else {
+            JOptionPane.showMessageDialog(this, "CPF/Código: Alguma das informações não foi encontrada em nosso sistema.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            PaginaClientes paginaClientes = new PaginaClientes(null); // Substitua `null` pela instância correta se necessário
-            CadastroCliente cadastro = new CadastroCliente(paginaClientes);
-            cadastro.setLocationRelativeTo(paginaClientes);
+            PaginaAssinaturas paginaAssinaturas = new PaginaAssinaturas(null); // Substitua `null` pela instância correta se necessário
+            CadastroAssinatura cadastro = new CadastroAssinatura(paginaAssinaturas);
+            cadastro.setLocationRelativeTo(paginaAssinaturas);
             cadastro.setVisible(true);
         });
     }

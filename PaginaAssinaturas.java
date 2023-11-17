@@ -24,9 +24,7 @@ public class PaginaAssinaturas extends JDialog {
         super(parent, "Assinaturas", Dialog.ModalityType.APPLICATION_MODAL);
         this.   parentHome = parent;
         
-        catalogoAssinaturas = new CatalogoAssinaturas();  
-        catalogoAssinaturas.loadFromFile();  
-
+        catalogoAssinaturas = parent.getCatalogoAssinaturas();
         catalogoClientes = parent.getCatalogoClientes();
         catalogoAplicativos = parent.getCatalogoAplicativos();
         
@@ -74,7 +72,7 @@ public class PaginaAssinaturas extends JDialog {
             }
         });
 
-        JButton botao2 = menuAssinaturas.criarBotao("Gerenciar Assinaturas", new ActionListener() {
+        JButton botao2 = menuAssinaturas.criarBotao("Cancelar Assinatura", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //exibirGerenciarAssinaturas();
             }
@@ -92,8 +90,7 @@ public class PaginaAssinaturas extends JDialog {
         add(menuAssinaturas, BorderLayout.WEST);
     }
 
-    public void criarEAtualizarTabela() {
-       
+    public void criarEAtualizarTabela() {       
         CatalogoAssinaturas catalogoAssinaturas = new CatalogoAssinaturas();
         catalogoAssinaturas.loadFromFile();
         CatalogoAssinaturasViewModel modeloTabela = new CatalogoAssinaturasViewModel(catalogoAssinaturas);
@@ -124,6 +121,13 @@ public class PaginaAssinaturas extends JDialog {
         cadastro.setLocationRelativeTo(this); // Define a localização relativa à janela pai
         cadastro.setVisible(true);
     }
+    //Cancelar assinatura.
+    private void abrirJanelaCancelarAssinatura() {
+        CancelarAssinatura cancelar = new CancelarAssinatura(this);
+        cancelar.setLocationRelativeTo(this); // Define a localização relativa à janela pai
+        cancelar.setVisible(true);
+    }
+
 
 
     public static void main(String[] args) {

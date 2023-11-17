@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import clientes.*;
@@ -35,12 +37,25 @@ public class CatalogoAssinaturas {
     contAssinaturas++;
   }
 
+  public void removerAssinatura(Assinatura assinaturaParaRemover) {
+    listaAssinaturas.remove(assinaturaParaRemover);
+    contAssinaturas--;
+  }
+
   public Assinatura getAssinaturaNaLinha(int linha) {
     if (linha >= listaAssinaturas.size()) {
         return null;
     }
     return listaAssinaturas.get(linha);
-}
+  }
+
+  public Assinatura getAssinaturaPorCPFECodigoApp(String cpf, int codigoApp) {
+    Optional<Assinatura> assinaturaEncontrada = listaAssinaturas.stream()
+        .filter(a -> a.getCpfCliente().equals(cpf) && a.getCodigoApp() == codigoApp)
+        .findFirst();
+
+    return assinaturaEncontrada.orElse(null);
+  }
 
   public void loadFromFile() {
         Path appsFilePath = Path.of("assinaturas/assinaturas.txt");

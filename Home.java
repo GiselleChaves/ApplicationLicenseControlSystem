@@ -18,6 +18,7 @@ public class Home extends JFrame {
     //CATALOGOS COMPARTILHADOS ENTRE TODAS PAGINAS
     private CatalogoClientes catalogoClientes;
     private CatalogoAplicativos catalogoAplicativos;
+    private CatalogoAssinaturas catalogoAssinaturas;
 
 
     public Home() {
@@ -27,6 +28,9 @@ public class Home extends JFrame {
 
         catalogoAplicativos = new CatalogoAplicativos();  
         catalogoAplicativos.loadFromFile(); 
+
+        catalogoAssinaturas = new CatalogoAssinaturas();  
+        catalogoAssinaturas.loadFromFile(); 
 
         configurarJanelaPrincipal();
 
@@ -44,6 +48,10 @@ public class Home extends JFrame {
 
     public CatalogoAplicativos getCatalogoAplicativos() {
         return catalogoAplicativos;
+    }
+
+    public CatalogoAssinaturas getCatalogoAssinaturas() {
+        return catalogoAssinaturas;
     }
 
     private void configurarJanelaPrincipal() {

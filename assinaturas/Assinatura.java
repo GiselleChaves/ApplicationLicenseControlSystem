@@ -110,7 +110,7 @@ public class Assinatura {
   }
 
   public String toLineFile() {
-      return codigoAssinatura+ ","+codigoApp+","+cpfCliente+","+mesInicioVigencia+","+anoInicioVigencia;
+      return codigoAssinatura+","+codigoApp+","+cpfCliente+","+mesInicioVigencia+","+anoInicioVigencia;
   }
 
   public static Assinatura fromLineFile(String line) {
