@@ -15,8 +15,19 @@ public class Home extends JFrame {
     
     private PaginaClientes paginaClientes; 
 
+    //CATALOGOS COMPARTILHADOS ENTRE TODAS PAGINAS
+    private CatalogoClientes catalogoClientes;
+    private CatalogoAplicativos catalogoAplicativos;
+
 
     public Home() {
+
+        catalogoClientes = new CatalogoClientes();  
+        catalogoClientes.loadFromFile();  
+
+        catalogoAplicativos = new CatalogoAplicativos();  
+        catalogoAplicativos.loadFromFile(); 
+
         configurarJanelaPrincipal();
 
         criarPainelMenuLateral();
@@ -25,6 +36,14 @@ public class Home extends JFrame {
         adicionarComponentes();
 
         exibirJanela();
+    }
+
+    public CatalogoClientes getCatalogoClientes() {
+        return catalogoClientes;
+    }
+
+    public CatalogoAplicativos getCatalogoAplicativos() {
+        return catalogoAplicativos;
     }
 
     private void configurarJanelaPrincipal() {

@@ -13,14 +13,14 @@ public class PaginaAplicativos extends JDialog {
     private PainelCompartilhado painelConteudoCompartilhado;
     private Home parentHome; 
 
+    //CATALOGOS 
     private CatalogoAplicativos catalogoAplicativos;
 
     public PaginaAplicativos(Home parent) {
         super(parent, "Aplicativos", Dialog.ModalityType.APPLICATION_MODAL);
         this.parentHome = parent;
 
-        catalogoAplicativos = new CatalogoAplicativos();  
-        catalogoAplicativos.loadFromFile();  
+        catalogoAplicativos = parent.getCatalogoAplicativos();
 
         configurarJanela();
 

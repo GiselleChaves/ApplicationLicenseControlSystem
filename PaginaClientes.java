@@ -11,6 +11,7 @@ public class PaginaClientes extends JDialog {
     private MenuLateral menuClientes;
     private PainelCompartilhado painelConteudoCompartilhado;
 
+    //CATALOGOS
     private CatalogoClientes catalogoClientes;
 
     private Home parentHome; 
@@ -19,8 +20,7 @@ public class PaginaClientes extends JDialog {
         super(parent, "Clientes", Dialog.ModalityType.APPLICATION_MODAL);
         this.   parentHome = parent;
 
-        catalogoClientes = new CatalogoClientes();  
-        catalogoClientes.loadFromFile();  
+        catalogoClientes = parent.getCatalogoClientes();
 
         configurarJanela();
         criarMenuClientes();

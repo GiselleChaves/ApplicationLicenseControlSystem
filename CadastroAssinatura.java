@@ -25,6 +25,8 @@ public class CadastroAssinatura extends JDialog {
     private JTextField campoAnoInicio;
 
     private PaginaAssinaturas paginaAssinaturas;
+
+    //CATALOGOS
     private CatalogoClientes catalogoClientes;
     private CatalogoAssinaturas catalogoAssinaturas;
     private CatalogoAplicativos catalogoAplicativos;
@@ -33,7 +35,11 @@ public class CadastroAssinatura extends JDialog {
     public CadastroAssinatura(PaginaAssinaturas parent) {
         super(parent, "Cadastro de Cliente", Dialog.ModalityType.APPLICATION_MODAL);
         this.paginaAssinaturas = parent;
+
         this.catalogoAssinaturas= parent.getCatalogoAssinaturas();
+        this.catalogoClientes= parent.getCatalogoClientes();
+        this.catalogoAplicativos= parent.getCatalogoAplicativos();
+        
         configurarJanela();
         criarComponentes();
     }

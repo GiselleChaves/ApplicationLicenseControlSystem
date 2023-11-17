@@ -74,7 +74,6 @@ public class CadastroCliente extends JDialog {
             String email = campoEmail.getText();
 
             Cliente cliente = catalogoClientes.getClienteByCpf(cpf);
-            System.out.println(cliente);
 
             if (cliente == null) {
                 Cliente novoCliente = new Cliente(cpf, nome, email);

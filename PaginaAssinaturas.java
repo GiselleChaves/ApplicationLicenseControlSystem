@@ -13,7 +13,10 @@ public class PaginaAssinaturas extends JDialog {
     private PainelCompartilhado painelConteudoCompartilhado;
     private GerenciarAssinaturas gerenciarAssinaturas;
 
+    //CATALOGOS
     CatalogoAssinaturas catalogoAssinaturas;
+    CatalogoClientes catalogoClientes;
+    CatalogoAplicativos catalogoAplicativos;
 
     private Home parentHome; 
 
@@ -23,6 +26,9 @@ public class PaginaAssinaturas extends JDialog {
         
         catalogoAssinaturas = new CatalogoAssinaturas();  
         catalogoAssinaturas.loadFromFile();  
+
+        catalogoClientes = parent.getCatalogoClientes();
+        catalogoAplicativos = parent.getCatalogoAplicativos();
         
         configurarJanela();
         criarMenuAssinaturas();
@@ -33,6 +39,14 @@ public class PaginaAssinaturas extends JDialog {
 
     public CatalogoAssinaturas getCatalogoAssinaturas() {
         return catalogoAssinaturas;
+    }
+
+    public CatalogoClientes getCatalogoClientes() {
+        return catalogoClientes;
+    }
+
+    public CatalogoAplicativos getCatalogoAplicativos() {
+        return catalogoAplicativos;
     }
 
     private void configurarJanela() {
