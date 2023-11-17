@@ -74,7 +74,7 @@ public class PaginaAssinaturas extends JDialog {
 
         JButton botao2 = menuAssinaturas.criarBotao("Cancelar Assinatura", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //exibirGerenciarAssinaturas();
+                abrirJanelaCancelarAssinatura();
             }
         });
 

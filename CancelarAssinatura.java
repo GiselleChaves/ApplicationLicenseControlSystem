@@ -43,7 +43,7 @@ public class CancelarAssinatura extends JDialog {
 
     private void configurarJanela() {
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        setSize(400, 350);
+        setSize(550, 300);
         // Alterado para FlowLayout com alinhamento à esquerda
         setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
     }
