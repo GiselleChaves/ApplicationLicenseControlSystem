@@ -57,6 +57,12 @@ public class CatalogoAssinaturas {
     return assinaturaEncontrada.orElse(null);
   }
 
+  public List<Assinatura> getAssinaturasByCPF(String cpf) {
+    return listaAssinaturas.stream()
+            .filter(assinatura -> assinatura.getCpfCliente().equals(cpf))
+            .collect(Collectors.toList());
+  }
+
   public void loadFromFile() {
         Path appsFilePath = Path.of("assinaturas/assinaturas.txt");
         try (Stream<String> appsStream = Files.lines(appsFilePath)) {

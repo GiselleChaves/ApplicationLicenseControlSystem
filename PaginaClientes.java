@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import clientes.*;
 import assinaturas.*;
@@ -10,19 +11,22 @@ import aplicativos.*;
 public class PaginaClientes extends JDialog {
     private MenuLateral menuClientes;
     private PainelCompartilhado painelConteudoCompartilhado;
+    private Assinatura assinatura;
 
     //CATALOGOS
     private CatalogoClientes catalogoClientes;
     private CatalogoAssinaturas catalogoAssinaturas;
+    private CatalogoAplicativos catalogoAplicativos;
 
     private Home parentHome; 
 
     public PaginaClientes(Home parent) {
         super(parent, "Clientes", Dialog.ModalityType.APPLICATION_MODAL);
         this.   parentHome = parent;
-    
+
         catalogoClientes = parent.getCatalogoClientes();
         catalogoAssinaturas = parent.getCatalogoAssinaturas();
+        catalogoAplicativos = parent.getCatalogoAplicativos();
 
         configurarJanela();
         criarMenuClientes();
@@ -33,6 +37,14 @@ public class PaginaClientes extends JDialog {
 
     public CatalogoClientes getCatalogoClientes() {
         return catalogoClientes;
+    }
+
+    public CatalogoAssinaturas getCatalogoAssinaturas() {
+        return catalogoAssinaturas;
+    }
+
+    public CatalogoAplicativos getCatalogoAplicativos(){
+        return catalogoAplicativos;
     }
 
     private void configurarJanela() {
@@ -67,11 +79,9 @@ public class PaginaClientes extends JDialog {
 
         JButton botao3 = menuClientes.criarBotao("Cliente: assinaturas", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //IMPLEMENTAR
-                /*Listar as assinaturas de um cliente */
+                abrirMostrarAssinaturas();
             }
         });
-
 
         menuClientes.adicionarEspacamento(20);
         menuClientes.add(rotuloTitulo);
@@ -106,7 +116,7 @@ public class PaginaClientes extends JDialog {
         painelConteudoCompartilhado.repaint();
     }
 
-    ///Opções:
+     ///Opções:
 
     //Cadastrar cliente.
     private void abrirJanelaCadastroCliente() {
@@ -121,11 +131,17 @@ public class PaginaClientes extends JDialog {
         editar.setLocationRelativeTo(this); // Define a localização relativa à janela pai
         editar.setVisible(true);
     }
+
+    private void abrirMostrarAssinaturas() {
+        MostrarAssinaturas mostrarAssinaturas = new MostrarAssinaturas(this);
+        mostrarAssinaturas.setLocationRelativeTo(this);
+        mostrarAssinaturas.setVisible(true);
+    }
     
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             Home home = new Home(); // Altere para Home ao invés de JFrame
             new PaginaClientes(home);
         });
-    }
+    }   
 }
