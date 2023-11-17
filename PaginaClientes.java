@@ -63,18 +63,13 @@ public class PaginaClientes extends JDialog {
             }
         });
 
-        JButton botao3 = menuClientes.criarBotao("Mostrar Clientes", new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
-
-        JButton botao4 = menuClientes.criarBotao("Mostrar Assinaturas", new ActionListener() {
+        JButton botao3 = menuClientes.criarBotao("Mostrar Assinaturas", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                
             }
         });
 
-        JButton botao5 = menuClientes.criarBotao("Cobranças", new ActionListener() {
+        JButton botao4 = menuClientes.criarBotao("Cobranças", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                
             }
@@ -90,8 +85,6 @@ public class PaginaClientes extends JDialog {
         menuClientes.add(botao3);
         menuClientes.adicionarEspacamento(10);
         menuClientes.add(botao4);
-        menuClientes.adicionarEspacamento(10);
-        menuClientes.add(botao5);
     }
 
     private void adicionarComponentes() {
