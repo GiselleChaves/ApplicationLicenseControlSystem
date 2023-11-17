@@ -13,14 +13,16 @@ public class PaginaClientes extends JDialog {
 
     //CATALOGOS
     private CatalogoClientes catalogoClientes;
+    private CatalogoAssinaturas catalogoAssinaturas;
 
     private Home parentHome; 
 
     public PaginaClientes(Home parent) {
         super(parent, "Clientes", Dialog.ModalityType.APPLICATION_MODAL);
         this.   parentHome = parent;
-
+    
         catalogoClientes = parent.getCatalogoClientes();
+        catalogoAssinaturas = parent.getCatalogoAssinaturas();
 
         configurarJanela();
         criarMenuClientes();
