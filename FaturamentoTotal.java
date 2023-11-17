@@ -5,15 +5,14 @@ import java.awt.event.ActionListener;
 
 import aplicativos.*;
 
-public class FaturamentoSO extends JDialog {
+public class FaturamentoTotal extends JDialog {
   private CatalogoAplicativos catalogoAplicativos;
   private PaginaAplicativos paginaAplicativos;
 
-  double faturamentoIOS = catalogoAplicativos.mostraFaturamentoIOS();
-  double faturamentoAndroid = catalogoAplicativos.mostraFaturamentoAndroid();
+  double faturamentoTotal = catalogoAplicativos.mostraFaturamentoTotal();
 
-  public FaturamentoSO(PaginaAplicativos parent) {
-    super(parent, "Faturamento SO Aplicativos", Dialog.ModalityType.APPLICATION_MODAL);
+  public FaturamentoTotal(PaginaAplicativos parent) {
+    super(parent, "Faturamento Total", Dialog.ModalityType.APPLICATION_MODAL);
     this.paginaAplicativos = parent;
     this.catalogoAplicativos = parent.getCatalogoAplicativos();
     configurarJanela();
@@ -28,8 +27,7 @@ public class FaturamentoSO extends JDialog {
   }
 
   private void criarComponentes() {
-    JLabel labelIOS = new JLabel("Faturamento por IOS: R$" + faturamentoIOS);
-    JLabel labelAndroid = new JLabel("Faturamento por Android: R$" + faturamentoAndroid);
+    JLabel labelTotal = new JLabel("Faturamento Total: R$" + faturamentoTotal);
 
     JButton botaoFechar = new JButton("Fechar");
     botaoFechar.addActionListener(new ActionListener() {
@@ -37,8 +35,7 @@ public class FaturamentoSO extends JDialog {
       }
     });
 
-    add(labelIOS);
-    add(labelAndroid);
+    add(labelTotal);
     add(botaoFechar, BorderLayout.SOUTH);
   }
     private void adicionarComponentes() {

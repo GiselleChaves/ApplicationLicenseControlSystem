@@ -100,8 +100,7 @@ public class PaginaAplicativos extends JDialog {
 
         JButton botao6 = menuAplicativos.criarBotao("Faturamento total", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                mostrarMensagem("IMPLEMENTAR");
-                /*Mostrar a soma do faturamento de todos os aplicativos */
+                abrirJanelaFaturamentoTotal();
             }
         });
     
@@ -182,6 +181,13 @@ public class PaginaAplicativos extends JDialog {
         faturamentoSo.setLocationRelativeTo(this); // Define a localização relativa à janela pai
         faturamentoSo.setVisible(true);
     }
+
+    //Faturamento Total
+     private void abrirJanelaFaturamentoTotal() {
+        FaturamentoTotal faturamentoTotal = new FaturamentoTotal(this);
+        faturamentoTotal.setLocationRelativeTo(this); // Define a localização relativa à janela pai
+        faturamentoTotal.setVisible(true);
+     }
     
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
