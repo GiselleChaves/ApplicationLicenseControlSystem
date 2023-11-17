@@ -15,12 +15,16 @@ public class PaginaAplicativos extends JDialog {
 
     //CATALOGOS 
     private CatalogoAplicativos catalogoAplicativos;
+    private CatalogoAssinaturas catalogoAssinaturas;
+    private CatalogoClientes catalogoClientes;
 
     public PaginaAplicativos(Home parent) {
         super(parent, "Aplicativos", Dialog.ModalityType.APPLICATION_MODAL);
         this.parentHome = parent;
 
         catalogoAplicativos = parent.getCatalogoAplicativos();
+        catalogoAssinaturas = parent.getCatalogoAssinaturas();
+        catalogoClientes = parent.getCatalogoClientes();
 
         configurarJanela();
 
@@ -35,6 +39,13 @@ public class PaginaAplicativos extends JDialog {
         return catalogoAplicativos;
     }
 
+    public CatalogoAssinaturas getCatalogoAssinaturas() {
+        return catalogoAssinaturas;
+    }
+
+    public CatalogoClientes getCatalogoClientes() {
+        return catalogoClientes;
+    }
 
     private void configurarJanela() {
         setTitle("Aplicativos");
@@ -70,7 +81,7 @@ public class PaginaAplicativos extends JDialog {
     
         JButton botao3 = menuAplicativos.criarBotao("Aplicativo: mostrar assinantes", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                mostrarMensagem("IMPLEMENTAR");
+                abrirJanelaMostrarAssinantes();
             }
         });
 
@@ -152,6 +163,12 @@ public class PaginaAplicativos extends JDialog {
         editar.setVisible(true);
     }
 
+    //Edtiar cliente
+    private void abrirJanelaMostrarAssinantes() {
+        MostrarAssinantes mostrar = new MostrarAssinantes(this);
+        mostrar.setLocationRelativeTo(this); // Define a localização relativa à janela pai
+        mostrar.setVisible(true);
+    }
     
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {

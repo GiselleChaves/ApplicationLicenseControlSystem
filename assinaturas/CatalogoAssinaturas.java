@@ -63,6 +63,14 @@ public class CatalogoAssinaturas {
             .collect(Collectors.toList());
   }
 
+  public List<String> getCpfsClienteByAplicativo(int codigoApp) {
+    return listaAssinaturas.stream()
+            .filter(assinatura -> assinatura.getCodigoApp() == codigoApp)
+            .map(Assinatura::getCpfCliente)
+            .collect(Collectors.toList());
+  }
+
+  
   public void loadFromFile() {
         Path appsFilePath = Path.of("assinaturas/assinaturas.txt");
         try (Stream<String> appsStream = Files.lines(appsFilePath)) {

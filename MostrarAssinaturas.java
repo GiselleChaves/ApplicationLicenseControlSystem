@@ -82,13 +82,12 @@ public class MostrarAssinaturas extends JDialog {
                     mensagem.append("Mês de Início da Vigência: ").append(assinatura.getMesInicioVigencia()).append("\n");
                     mensagem.append("Ano de Início da Vigência: ").append(assinatura.getAnoInicioVigencia()).append("\n");
                 
-                    // Adicione mais informações conforme necessário
-                
-                    mensagem.append("\n"); // Adiciona uma linha em branco para separar as assinaturas
+        
+                    mensagem.append("\n");
                 }
                 areaTextoAssinaturas.setText(mensagem.toString());
             } else {
-                JOptionPane.showMessageDialog(this, "Cliente não encontrado", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Cliente não possui assinaturas", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Por favor, insira um CPF válido", "Erro", JOptionPane.ERROR_MESSAGE);
